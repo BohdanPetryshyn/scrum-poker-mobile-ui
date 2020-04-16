@@ -1,24 +1,33 @@
 import React from 'react';
-import {Container, Content, Text, Button} from "native-base";
+import PropTypes from 'prop-types';
+import { Container, Content, Text, Button } from 'native-base';
 
-export default props => {
+const HomeScreen = props => {
   return (
     <Container>
-      <Content >
+      <Content>
         <Text>Home</Text>
         <Button
           full
-          style={{marginTop: 10}}
-          onPress={() => props.navigation.navigate("CreateSession")}>
+          style={{ marginTop: 10 }}
+          onPress={() => props.navigation.navigate('CreateSession')}
+        >
           <Text>Create Session</Text>
         </Button>
         <Button
           full
-          style={{marginTop: 10}}
-          onPress={() => props.navigation.navigate("JoinSession")}>
+          style={{ marginTop: 10 }}
+          onPress={() => props.navigation.navigate('JoinSession')}
+        >
           <Text>Join Session</Text>
         </Button>
       </Content>
     </Container>
-  )
+  );
 };
+
+HomeScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
+};
+
+export default HomeScreen;
