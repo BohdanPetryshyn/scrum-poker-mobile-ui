@@ -1,12 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 
 import HomeNavigator from './HomeNavigator';
+import SessionNavigator from './SessionNavigator';
+import { getIsSessionStarted } from '../selectors/session';
 
-const Navigator = () => (
+const Navigator = ({ isSessionStarted }) => (
   <NavigationContainer>
-    <HomeNavigator />
+    {isSessionStarted ? <SessionNavigator /> : <HomeNavigator />}
   </NavigationContainer>
 );
 
-export default Navigator;
+Navigator.propTypes = {
+  isSessionStarted: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = state => ({
+  isSessionStarted: getIsSessionStarted(state),
+});
+
+export default connect(mapStateToProps)(Navigator);
