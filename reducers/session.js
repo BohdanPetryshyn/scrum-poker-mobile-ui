@@ -1,7 +1,7 @@
 import { Map } from 'immutable';
 
 const initialState = Map({
-  sessionId: 'null',
+  sessionId: null,
 });
 
 export default (state = initialState, action) => {
