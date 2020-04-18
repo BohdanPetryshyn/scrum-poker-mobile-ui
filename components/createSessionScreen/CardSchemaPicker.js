@@ -15,11 +15,25 @@ const CardSchemaPicker = ({
   setCardSchema,
   cardSchemas,
 }) => {
+  const renderOptions = () =>
+    cardSchemas
+      .map(cardSchema => (
+        <Picker.Item
+          label={cardSchema.display}
+          value={cardSchema.name}
+          key={cardSchema.name}
+        />
+      ))
+      .toArray();
+
   return (
-    <Picker selectedValue={selectedCardSchema} onValueChange={setCardSchema}>
-      {cardSchemas.map(cardSchema => (
-        <Picker.Item label={cardSchema.display} value={cardSchema.name} />
-      ))}
+    <Picker
+      mode="dropdown"
+      placeholder="Select a card set"
+      selectedValue={selectedCardSchema}
+      onValueChange={setCardSchema}
+    >
+      {renderOptions()}
     </Picker>
   );
 };
