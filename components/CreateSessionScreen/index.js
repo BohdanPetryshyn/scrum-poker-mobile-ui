@@ -4,22 +4,25 @@ import PropTypes from 'prop-types';
 import { Container, Content, Form, Item, Label, Input } from 'native-base';
 import { getFieldValue } from '../../store/selectors/createSessionScreen';
 import { setFieldValue } from '../../store/actions/createSessionScreen';
-import CardSchemaPicker from '../createSessionScreen/CardSchemaPicker';
+import CardSchemaPicker from './CardSchemaPicker';
 
 const CreateSessionScreen = ({ username, topic, setUsername, setTopic }) => {
   return (
     <Container>
       <Content>
         <Form>
-          <Item floatingLabel>
+          <Item>
             <Label>Username</Label>
             <Input value={username} onChangeText={setUsername} />
           </Item>
-          <Item floatingLabel>
+          <Item>
             <Label>Session Topic</Label>
             <Input value={topic} onChangeText={setTopic} />
           </Item>
-          <CardSchemaPicker />
+          <Item>
+            <Label>Card Set</Label>
+            <CardSchemaPicker />
+          </Item>
         </Form>
       </Content>
     </Container>
