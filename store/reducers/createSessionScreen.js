@@ -8,7 +8,7 @@ const initialState = Map({
 });
 
 export default (state = initialState, action) => {
-  switch (state.action) {
+  switch (action.type) {
     case CREATE_SESSION_SCREEN_ACTION_TYPES.SET_FIELD_VALUE:
       return state.set(action.payload.filedName, action.payload.value);
     default:

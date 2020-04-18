@@ -6,7 +6,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "lint": "eslint **/*.js"
+    "lint": "eslint **/*.js",
+    "debug": "open 'rndebugger://set-debugger-loc?host=localhost&port=19001' && expo start"
   },
   "dependencies": {
     "@expo/vector-icons": "^10.0.0",
@@ -32,6 +33,7 @@
     "react-redux": "^7.2.0",
     "redux": "^4.0.5",
     "redux-axios-middleware": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
     "redux-immutable": "^4.0.0",
     "reselect": "^4.0.0"
   },
