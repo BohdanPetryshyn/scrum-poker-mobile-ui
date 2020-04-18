@@ -1,26 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Container, Content, Text } from 'native-base';
+import { Container, Content, Form, Item, Label, Input } from 'native-base';
 
 const CreateSessionScreen = props => {
   return (
     <Container>
       <Content>
-        <Text>Create Session</Text>
-        <Button
-          full
-          style={{ marginTop: 10 }}
-          onPress={() => props.navigation.navigate('Home')}
-        >
-          <Text>Home</Text>
-        </Button>
+        <Form>
+          <Item floatingLabel>
+            <Label>Username</Label>
+            <Input />
+          </Item>
+        </Form>
       </Content>
     </Container>
   );
-};
-
-CreateSessionScreen.propTypes = {
-  navigation: PropTypes.object.isRequired,
 };
 
 export default CreateSessionScreen;

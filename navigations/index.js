@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import HomeNavigator from './HomeNavigator';
 import SessionNavigator from './SessionNavigator';
-import { getIsSessionStarted } from '../selectors/session';
+import { getIsSessionStarted } from '../store/selectors/session';
 
 const Navigator = ({ isSessionStarted }) => (
   <NavigationContainer>
