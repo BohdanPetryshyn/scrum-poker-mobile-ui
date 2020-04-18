@@ -1,9 +1,9 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import VoteScreen from '../screens/VoteScreen';
-import ResultsScreen from '../screens/ResultsScreen';
-import getTabBarIcon from '../helpers/getTabBarIcon';
+import VoteScreen from '../components/screens/VoteScreen';
+import ResultsScreen from '../components/screens/ResultsScreen';
+import getTabBarIcon from '../components/helpers/getTabBarIcon';
 
 const PodiumIcon = getTabBarIcon('ios-podium');
 const ListIcon = getTabBarIcon('ios-list');
