@@ -1,11 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 
 import Navigator from './navigations';
-import reducer from './reducers';
-
-const store = createStore(reducer);
+import store from './store';
 
 export default () => (
   <Provider store={store}>
