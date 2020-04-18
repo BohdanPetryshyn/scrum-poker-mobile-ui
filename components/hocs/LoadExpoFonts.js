@@ -7,17 +7,17 @@ import Roboto from 'native-base/Fonts/Roboto.ttf';
 import RobotoMedium from 'native-base/Fonts/Roboto_medium.ttf';
 
 const LoadExpoFonts = ({ children }) => {
-  const [isReady, setIsReady] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     Font.loadAsync({
       Roboto,
       Roboto_medium: RobotoMedium,
       ...Ionicons.font,
-    }).then(() => setIsReady(true));
+    }).then(() => setIsLoaded(true));
   });
 
-  return isReady ? children : <AppLoading />;
+  return isLoaded ? children : <AppLoading />;
 };
 
 LoadExpoFonts.propTypes = {

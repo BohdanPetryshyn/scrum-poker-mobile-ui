@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Provider } from 'react-redux';
+import { AppLoading } from 'expo';
 
 import Navigator from './navigations';
 import store from './store';
@@ -7,9 +8,17 @@ import LoadExpoFonts from './components/hocs/LoadExpoFonts';
 import { fetchCardSchemas } from './store/actions/requestActions';
 
 export default () => {
+  const [isLoaded, setIsLoaded] = useState(false);
+
   useEffect(() => {
-    store.dispatch(fetchCardSchemas());
+    Promise.all([store.dispatch(fetchCardSchemas())]).then(() =>
+      setIsLoaded(true)
+    );
   });
+
+  if (!isLoaded) {
+    return <AppLoading />;
+  }
 
   return (
     <LoadExpoFonts>

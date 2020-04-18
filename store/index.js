@@ -1,10 +1,14 @@
 import { createStore, applyMiddleware } from 'redux';
-import axiosMiddleware from 'redux-axios-middleware';
+import createAxiosMiddleware from 'redux-axios-middleware';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import client from '../api/client';
 import reducers from './reducers';
 
-const middleware = applyMiddleware(axiosMiddleware(client));
+const axiosMiddleware = createAxiosMiddleware(client, {
+  returnRejectedPromiseOnError: true,
+});
+
+const middleware = applyMiddleware(axiosMiddleware);
 
 export default createStore(reducers, composeWithDevTools(middleware));
