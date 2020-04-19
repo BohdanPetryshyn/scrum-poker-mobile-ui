@@ -8,6 +8,7 @@ const initialState = Map({
   topic: null,
   cardSchema: null,
   username: null,
+  stage: null,
 });
 
 export default (state = initialState, action) => {
