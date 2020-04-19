@@ -1,4 +1,8 @@
-import { getCardSchema, getTopic } from '../selectors/createSessionScreen';
+import {
+  getCardSchema,
+  getTopic,
+  getUsername,
+} from '../selectors/createSessionScreen';
 import { createSession } from './requestActions';
 
 export const CREATE_SESSION_SCREEN_ACTION_TYPES = {
@@ -15,8 +19,9 @@ export const setFieldValue = (filedName, value) => ({
 
 export const createSessionFromStore = () => (dispatch, getState) => {
   const state = getState();
+  const username = getUsername(state);
   const topic = getTopic(state);
   const cardSchema = getCardSchema(state);
 
-  return dispatch(createSession(topic, cardSchema));
+  return dispatch(createSession(topic, cardSchema, username));
 };

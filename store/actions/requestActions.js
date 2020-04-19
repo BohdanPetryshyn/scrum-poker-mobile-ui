@@ -27,9 +27,10 @@ export const fetchCardSchemas = () => ({
   },
 });
 
-export const createSession = (topic, cardSchema) => ({
+export const createSession = (topic, cardSchema, username) => ({
   types: getTypes(CREATE_POKER_SESSION_ACTION_TYPES),
   payload: {
+    username,
     request: {
       url: '/poker-session',
       method: 'POST',
