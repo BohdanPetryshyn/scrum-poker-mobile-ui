@@ -15,7 +15,7 @@ const LoadExpoFonts = ({ children }) => {
       Roboto_medium: RobotoMedium,
       ...Ionicons.font,
     }).then(() => setIsLoaded(true));
-  });
+  }, []);
 
   return isLoaded ? children : <AppLoading />;
 };

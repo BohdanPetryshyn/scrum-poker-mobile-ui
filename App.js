@@ -14,7 +14,7 @@ export default () => {
     Promise.all([store.dispatch(fetchCardSchemas())]).then(() =>
       setIsLoaded(true)
     );
-  });
+  }, []);
 
   if (!isLoaded) {
     return <AppLoading />;
