@@ -5,7 +5,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import { Picker } from 'native-base';
 import {
   getCardSchemas,
-  getFieldValue,
+  getCardSchema,
 } from '../../store/selectors/createSessionScreen';
 import { setFieldValue } from '../../store/actions/createSessionScreen';
 import CardSchema from '../../store/models/CardSchema';
@@ -46,14 +46,10 @@ CardSchemaPicker.propTypes = {
   ).isRequired,
 };
 
-const mapStateToProps = state => {
-  const getCardSchema = getFieldValue('cardSchema');
-
-  return {
-    selectedCardSchema: getCardSchema(state),
-    cardSchemas: getCardSchemas(state),
-  };
-};
+const mapStateToProps = state => ({
+  selectedCardSchema: getCardSchema(state),
+  cardSchemas: getCardSchemas(state),
+});
 
 const mapDispatchToProps = {
   setCardSchema: cardSchema => setFieldValue('cardSchema', cardSchema),

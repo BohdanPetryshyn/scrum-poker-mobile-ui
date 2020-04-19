@@ -27,7 +27,7 @@ export const fetchCardSchemas = () => ({
   },
 });
 
-export const createPokerSession = (topic, cardSchema) => ({
+export const createSession = (topic, cardSchema) => ({
   types: getTypes(CREATE_POKER_SESSION_ACTION_TYPES),
   payload: {
     request: {

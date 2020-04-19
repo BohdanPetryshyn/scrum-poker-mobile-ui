@@ -1,12 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Container, Content, Form, Item, Label, Input } from 'native-base';
-import { getFieldValue } from '../../store/selectors/createSessionScreen';
-import { setFieldValue } from '../../store/actions/createSessionScreen';
+import {
+  Container,
+  Content,
+  Form,
+  Item,
+  Label,
+  Input,
+  Button,
+  Text,
+} from 'native-base';
+import {
+  getIsFormFulfilled,
+  getTopic,
+  getUsername,
+} from '../../store/selectors/createSessionScreen';
+import {
+  createSessionFromStore,
+  setFieldValue,
+} from '../../store/actions/createSessionScreen';
 import CardSchemaPicker from './CardSchemaPicker';
+import { scaleSize } from '../styles/size';
 
-const CreateSessionScreen = ({ username, topic, setUsername, setTopic }) => {
+const CreateSessionScreen = ({
+  username,
+  topic,
+  setUsername,
+  setTopic,
+  createSession,
+  isFormFulfilled,
+}) => {
   return (
     <Container>
       <Content>
@@ -23,6 +47,14 @@ const CreateSessionScreen = ({ username, topic, setUsername, setTopic }) => {
             <Label>Card Set</Label>
             <CardSchemaPicker />
           </Item>
+          <Button
+            style={{ marginTop: scaleSize(30) }}
+            block
+            disabled={!isFormFulfilled}
+            onPress={createSession}
+          >
+            <Text>Create Session</Text>
+          </Button>
         </Form>
       </Content>
     </Container>
@@ -34,21 +66,20 @@ CreateSessionScreen.propTypes = {
   topic: PropTypes.string.isRequired,
   setUsername: PropTypes.func.isRequired,
   setTopic: PropTypes.func.isRequired,
+  createSession: PropTypes.func.isRequired,
+  isFormFulfilled: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = state => {
-  const getUsername = getFieldValue('username');
-  const getTopic = getFieldValue('topic');
-
-  return {
-    username: getUsername(state),
-    topic: getTopic(state),
-  };
-};
+const mapStateToProps = state => ({
+  username: getUsername(state),
+  topic: getTopic(state),
+  isFormFulfilled: getIsFormFulfilled(state),
+});
 
 const mapDispatchToProps = {
   setUsername: username => setFieldValue('username', username),
   setTopic: topic => setFieldValue('topic', topic),
+  createSession: createSessionFromStore,
 };
 
 export default connect(
