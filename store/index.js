@@ -2,7 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import createAxiosMiddleware from 'redux-axios-middleware';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import client from '../api/client';
+import client from '../api/httpClient';
 import reducers from './reducers';
 
 const axiosMiddleware = createAxiosMiddleware(client, {
