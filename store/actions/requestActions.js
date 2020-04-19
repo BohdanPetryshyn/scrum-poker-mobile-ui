@@ -14,11 +14,29 @@ export const FETCH_CARD_SCHEMAS_ACTION_TYPES = createRequestActionTypes(
   'FETCH_CARD_SCHEMA'
 );
 
+export const CREATE_POKER_SESSION_ACTION_TYPES = createRequestActionTypes(
+  'CREATE_POKER_SESSION'
+);
+
 export const fetchCardSchemas = () => ({
   types: getTypes(FETCH_CARD_SCHEMAS_ACTION_TYPES),
   payload: {
     request: {
       url: '/card-schema',
+    },
+  },
+});
+
+export const createPokerSession = (topic, cardSchema) => ({
+  types: getTypes(CREATE_POKER_SESSION_ACTION_TYPES),
+  payload: {
+    request: {
+      url: '/poker-session',
+      method: 'POST',
+      data: {
+        topic,
+        cardSchema,
+      },
     },
   },
 });
