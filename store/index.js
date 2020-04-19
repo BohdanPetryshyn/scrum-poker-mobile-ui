@@ -4,11 +4,14 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import client from '../api/httpClient';
 import reducers from './reducers';
+import createSocketMiddleware from './middleware/socketMiddleware';
 
 const axiosMiddleware = createAxiosMiddleware(client, {
   returnRejectedPromiseOnError: true,
 });
 
-const middleware = applyMiddleware(axiosMiddleware);
+const socketMiddleware = createSocketMiddleware('http://192.168.1.240:8080');
+
+const middleware = applyMiddleware(axiosMiddleware, socketMiddleware);
 
 export default createStore(reducers, composeWithDevTools(middleware));
