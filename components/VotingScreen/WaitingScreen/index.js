@@ -1,14 +1,14 @@
 import React from 'react';
 import { Container, Content, Text } from 'native-base';
 
-const VoteScreen = () => {
+const WaitingScreen = () => {
   return (
     <Container>
       <Content>
-        <Text>Vote</Text>
+        <Text>Wait...</Text>
       </Content>
     </Container>
   );
 };
 
-export default VoteScreen;
+export default WaitingScreen;

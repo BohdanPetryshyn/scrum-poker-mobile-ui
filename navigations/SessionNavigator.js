@@ -1,8 +1,8 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import VoteScreen from '../components/screens/VoteScreen';
-import ResultsScreen from '../components/screens/ResultsScreen';
+import VotingScreen from '../components/VotingScreen';
+import ResultsScreen from '../components/ResultsScreen';
 import getTabBarIcon from '../components/hocs/getTabBarIcon';
 
 const PodiumIcon = getTabBarIcon('ios-podium');
@@ -14,7 +14,7 @@ const SessionNavigator = () => (
   <Tab.Navigator>
     <Tab.Screen
       name="Vote"
-      component={VoteScreen}
+      component={VotingScreen}
       options={{
         tabBarIcon: PodiumIcon,
       }}

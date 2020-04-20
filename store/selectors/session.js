@@ -11,3 +11,11 @@ export const getIsSessionStarted = createSelector(
   getSessionId,
   sessionId => !isNil(sessionId)
 );
+
+export const getSessionStage = createSelector(getSessionState, sessionState =>
+  sessionState.get('stage')
+);
+
+export const getIsSessionHost = createSelector(getSessionState, sessionState =>
+  sessionState.get('isHost')
+);
