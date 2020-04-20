@@ -9,6 +9,7 @@ const initialState = Map({
   cardSchema: null,
   username: null,
   stage: null,
+  isHost: null,
 });
 
 export default (state = initialState, action) => {
@@ -18,6 +19,7 @@ export default (state = initialState, action) => {
         ...action.payload.data,
         cardSchema: CardSchema(action.payload.cardSchema),
         username: getOriginRequestActionPayload(action).username,
+        isHost: true,
       });
     default:
       return state;
