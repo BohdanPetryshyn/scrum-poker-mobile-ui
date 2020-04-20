@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import HomeScreen from '../components/screens/HomeScreen';
 import CreateSessionScreen from '../components/CreateSessionScreen';
-import JoinSessionScreen from '../components/screens/JoinSessionScreen';
+import JoinSessionScreen from '../components/JoinSessionScreen';
 
 const Stack = createStackNavigator();
 

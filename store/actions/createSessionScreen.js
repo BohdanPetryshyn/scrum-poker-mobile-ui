@@ -6,7 +6,7 @@ import {
 import { createSession } from './requestActions';
 
 export const CREATE_SESSION_SCREEN_ACTION_TYPES = {
-  SET_FIELD_VALUE: 'SET_FIELDS_VALUE',
+  SET_FIELD_VALUE: 'SET_CREATE_SESSION_FIELD_VALUE',
 };
 
 export const setFieldValue = (filedName, value) => ({

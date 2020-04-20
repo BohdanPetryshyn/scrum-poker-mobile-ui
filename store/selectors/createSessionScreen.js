@@ -23,7 +23,7 @@ export const getCardSchemas = createSelector(
   createSessionScreenState => createSessionScreenState.get('cardSchemas')
 );
 
-export const getIsFormFulfilled = createSelector(
+export const getIsFormFilled = createSelector(
   [getUsername, getTopic, getCardSchema],
   (username, topic, cardSchema) => !!(username && topic && cardSchema)
 );

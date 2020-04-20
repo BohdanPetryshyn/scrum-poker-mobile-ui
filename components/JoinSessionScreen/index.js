@@ -11,24 +11,23 @@ import {
   Button,
   Text,
 } from 'native-base';
-import {
-  getIsFormFilled,
-  getTopic,
-  getUsername,
-} from '../../store/selectors/createSessionScreen';
-import {
-  createSessionFromStore,
-  setFieldValue,
-} from '../../store/actions/createSessionScreen';
-import CardSchemaPicker from './CardSchemaPicker';
 import { scaleSize } from '../styles/size';
+import {
+  getUsername,
+  getSessionId,
+  getIsFormFilled,
+} from '../../store/selectors/joinSessionScreen';
+import {
+  joinSessionFromStore,
+  setFieldValue,
+} from '../../store/actions/joinSessionScreen';
 
-const CreateSessionScreen = ({
+const JoinSessionScreen = ({
   username,
-  topic,
+  sessionId,
   setUsername,
-  setTopic,
-  createSession,
+  setSessionId,
+  joinSession,
   isFormFilled,
 }) => {
   return (
@@ -40,20 +39,16 @@ const CreateSessionScreen = ({
             <Input value={username} onChangeText={setUsername} />
           </Item>
           <Item>
-            <Label>Session Topic</Label>
-            <Input value={topic} onChangeText={setTopic} />
-          </Item>
-          <Item>
-            <Label>Card Set</Label>
-            <CardSchemaPicker />
+            <Label>Session ID</Label>
+            <Input value={sessionId} onChangeText={setSessionId} />
           </Item>
           <Button
             style={{ marginTop: scaleSize(30) }}
             block
             disabled={!isFormFilled}
-            onPress={createSession}
+            onPress={joinSession}
           >
-            <Text>Create Session</Text>
+            <Text>Join Session</Text>
           </Button>
         </Form>
       </Content>
@@ -61,28 +56,25 @@ const CreateSessionScreen = ({
   );
 };
 
-CreateSessionScreen.propTypes = {
+JoinSessionScreen.propTypes = {
   username: PropTypes.string.isRequired,
-  topic: PropTypes.string.isRequired,
+  sessionId: PropTypes.string.isRequired,
   setUsername: PropTypes.func.isRequired,
-  setTopic: PropTypes.func.isRequired,
-  createSession: PropTypes.func.isRequired,
+  setSessionId: PropTypes.func.isRequired,
+  joinSession: PropTypes.func.isRequired,
   isFormFilled: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
   username: getUsername(state),
-  topic: getTopic(state),
+  sessionId: getSessionId(state),
   isFormFilled: getIsFormFilled(state),
 });
 
 const mapDispatchToProps = {
   setUsername: username => setFieldValue('username', username),
-  setTopic: topic => setFieldValue('topic', topic),
-  createSession: createSessionFromStore,
+  setSessionId: sessionId => setFieldValue('sessionId', sessionId),
+  joinSession: joinSessionFromStore,
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CreateSessionScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(JoinSessionScreen);
