@@ -7,19 +7,19 @@ export const SOCKET_ACTIONS = {
   SOCKET_DISCONNECTED: 'SOCKET_DISCONNECTED',
 };
 
-const storeConnected = {
+const socketConnected = {
   type: SOCKET_ACTIONS.SOCKET_CONNECTED,
 };
 
-const storeDisconnected = {
+const socketDisconnected = {
   type: SOCKET_ACTIONS.SOCKET_DISCONNECTED,
 };
 
 const createSocketMiddleware = url => store => {
   const socket = io.connect(url);
 
-  socket.on('connect', () => store.dispatch(storeConnected));
-  socket.on('disconnect', () => store.dispatch(storeDisconnected));
+  socket.on('connect', () => store.dispatch(socketConnected));
+  socket.on('disconnect', () => store.dispatch(socketDisconnected));
 
   return next => action => {
     if (action.type === EMIT_SOCKET_EVENT_ACTION_TYPE) {
