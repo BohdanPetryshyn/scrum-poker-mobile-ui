@@ -46,7 +46,7 @@ export const createSession = (topic, cardSchema, username) => ({
   },
 });
 
-export const joinSession = (sessionId, username) => ({
+export const getSession = (sessionId, username) => ({
   types: getTypes(JOIN_SESSION_ACTION_TYPES),
   payload: {
     username,

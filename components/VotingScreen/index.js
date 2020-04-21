@@ -5,14 +5,15 @@ import {
   getIsSessionHost,
   getSessionStage,
 } from '../../store/selectors/session';
-import { WAITING, VOTING, RESULT } from '../../store/models/sessionState';
+import { VOTING, RESULT } from '../../store/models/sessionState';
 import ResultScreen from './ResultScreen';
 import CreateStoryScreen from './CreateStoryScreen';
 import WaitingScreen from './WaitingScreen';
+import EstimateScreen from './EstimateScreen';
 
 const VotingScreen = ({ sessionStage, isSessionHost }) => {
   if (sessionStage === VOTING) {
-    return <VotingScreen />;
+    return <EstimateScreen />;
   }
 
   if (sessionStage === RESULT) {
