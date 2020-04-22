@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 import { Picker } from 'native-base';
 import { getSessionAvailableEstimates } from '../../../store/selectors/session';
@@ -26,7 +25,7 @@ const EstimatePicker = ({ estimates, selectedEstimate, setEstimate }) => {
 };
 
 EstimatePicker.propTypes = {
-  estimates: ImmutablePropTypes.listOf(PropTypes.number).isRequired,
+  estimates: PropTypes.arrayOf(PropTypes.number).isRequired,
   selectedEstimate: PropTypes.number,
   setEstimate: PropTypes.func.isRequired,
 };

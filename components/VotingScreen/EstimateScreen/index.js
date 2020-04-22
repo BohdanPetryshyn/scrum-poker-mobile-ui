@@ -1,13 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Container, Content, Grid, Col, Row, H1, Text } from 'native-base';
+import {
+  Container,
+  Content,
+  Grid,
+  Col,
+  Row,
+  H1,
+  Text,
+  Item,
+  Label,
+} from 'native-base';
 import { scaleSize } from '../../styles/size';
 import VotingCountDown from './VotingCountDown';
 import {
   getStoryDescription,
   getStorySummary,
 } from '../../../store/selectors/estimatingScreen';
+import EstimatePicker from './EstimatePicker';
 
 const EstimateScreen = ({ storySummary, storyDescription }) => {
   return (
@@ -22,6 +33,17 @@ const EstimateScreen = ({ storySummary, storyDescription }) => {
               <H1>{storySummary}</H1>
               <Text>{storyDescription}</Text>
             </Col>
+          </Row>
+          <Row
+            size={8}
+            style={{
+              alignItems: 'flex-start',
+            }}
+          >
+            <Item style={{ width: '100%' }}>
+              <Label>Your Estimate</Label>
+              <EstimatePicker />
+            </Item>
           </Row>
         </Grid>
       </Content>

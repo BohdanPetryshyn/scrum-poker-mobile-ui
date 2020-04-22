@@ -3,7 +3,7 @@ import { Record, List } from 'immutable';
 const CardSchema = Record({
   name: '',
   display: '',
-  estimates: List(),
+  estimates: [],
 });
 
 export default CardSchema;
