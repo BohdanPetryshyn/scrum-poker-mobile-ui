@@ -16,6 +16,7 @@ export const EMITTED_SOCKET_EVENT_ACTION_TYPES = {
   HOST_SESSION: 'HOST_SESSION',
   JOIN_SESSION: 'JOIN_SESSION',
   CREATE_STORY: 'CREATE_STORY',
+  ESTIMATE_STORY: 'ESTIMATE_STORY',
 };
 
 export const SOCKET_EVENT_TO_ACTION_MAPPERS = [
@@ -66,6 +67,19 @@ export const createStory = (summary, description, sessionId) => ({
         summary,
         description,
         sessionId,
+      },
+    },
+  },
+});
+
+export const estimateStory = (estimate, storyId) => ({
+  type: EMITTED_SOCKET_EVENT_ACTION_TYPES.ESTIMATE_STORY,
+  payload: {
+    socketEvent: {
+      eventName: 'ESTIMATE_STORY',
+      message: {
+        estimate,
+        storyId,
       },
     },
   },

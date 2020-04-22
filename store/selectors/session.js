@@ -15,3 +15,13 @@ export const getIsSessionStarted = createSelector(
 export const getSessionStage = createSelector(getSessionState, sessionState =>
   sessionState.get('stage')
 );
+
+export const getSessionCardSchema = createSelector(
+  getSessionState,
+  sessionState => sessionState.get('cardSchema')
+);
+
+export const getSessionAvailableEstimates = createSelector(
+  getSessionCardSchema,
+  cardSchema => cardSchema.get('estimates')
+);

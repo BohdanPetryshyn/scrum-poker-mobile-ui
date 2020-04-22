@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 import { Container, Content, Grid, Col, Row, H1, Text } from 'native-base';
 import { scaleSize } from '../../styles/size';
 import VotingCountDown from './VotingCountDown';
-import { getStorySummary } from '../../../store/selectors/estimatingScreen';
-import { getStoryDescription } from '../../../store/selectors/createStoryScreen';
+import {
+  getStoryDescription,
+  getStorySummary,
+} from '../../../store/selectors/estimatingScreen';
 
 const EstimateScreen = ({ storySummary, storyDescription }) => {
   return (

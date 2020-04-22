@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 import { Picker } from 'native-base';
+import { getSessionAvailableEstimates } from '../../../store/selectors/session';
+import { getEstimate } from '../../../store/selectors/estimatingScreen';
+import { estimateStoryFromStore } from '../../../store/actions/estimateScreen';
 
 const EstimatePicker = ({ estimates, selectedEstimate, setEstimate }) => {
   const renderEstimates = () =>
@@ -27,3 +30,14 @@ EstimatePicker.propTypes = {
   selectedEstimate: PropTypes.number,
   setEstimate: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = state => ({
+  estimates: getSessionAvailableEstimates(state),
+  selectedEstimate: getEstimate(state),
+});
+
+const mapDispatchToProps = {
+  setEstimate: estimateStoryFromStore,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(EstimatePicker);

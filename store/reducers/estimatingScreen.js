@@ -1,5 +1,8 @@
 import { Map, List } from 'immutable';
-import { RECEIVED_SOCKET_EVENT_ACTION_TYPES } from '../actions/socketActions';
+import {
+  EMITTED_SOCKET_EVENT_ACTION_TYPES,
+  RECEIVED_SOCKET_EVENT_ACTION_TYPES,
+} from '../actions/socketActions';
 import Story from '../models/Story';
 import {
   CREATE_SESSION_ACTION_TYPES,
@@ -26,6 +29,8 @@ export default (state = initialState, action) => {
         'votingFinishTime',
         action.payload.data.votingFinishTime
       );
+    case EMITTED_SOCKET_EVENT_ACTION_TYPES.ESTIMATE_STORY:
+      return state.set('estimate', action.payload.socketEvent.message.estimate);
     default:
       return state;
   }
