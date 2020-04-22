@@ -5,13 +5,15 @@ import {
 } from '../actions/requestActions';
 import CardSchema from '../models/CardSchema';
 import getOriginRequestActionPayload from '../getOriginRequestActionPayload';
+import { SOCKET_ACTIONS } from '../actions/socketActions';
+import { VOTING } from '../models/sessionState';
 
 const initialState = Map({
   sessionId: null,
   topic: null,
   cardSchema: null,
-  username: null,
   stage: null,
+  username: null,
   isHost: null,
 });
 
@@ -31,6 +33,8 @@ export default (state = initialState, action) => {
         username: getOriginRequestActionPayload(action).username,
         isHost: false,
       });
+    case SOCKET_ACTIONS.STORY_CREATED:
+      return state.set('stage', VOTING);
     default:
       return state;
   }
