@@ -4,7 +4,7 @@ import {
   JOIN_SESSION_ACTION_TYPES,
 } from '../actions/requestActions';
 import CardSchema from '../models/CardSchema';
-import { SOCKET_ACTION_TYPES } from '../actions/socketActions';
+import { RECEIVED_SOCKET_EVENT_ACTION_TYPES } from '../actions/socketActions';
 import { VOTING } from '../models/sessionState';
 
 const initialState = Map({
@@ -24,7 +24,7 @@ export default (state = initialState, action) => {
         stage: action.payload.data.stage,
         cardSchema: CardSchema(action.payload.data.cardSchema),
       });
-    case SOCKET_ACTION_TYPES.STORY_CREATED:
+    case RECEIVED_SOCKET_EVENT_ACTION_TYPES.STORY_CREATED:
       return state.set('stage', VOTING);
     default:
       return state;
