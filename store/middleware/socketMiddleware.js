@@ -1,17 +1,15 @@
 import io from 'socket.io-client';
 
-export const EMIT_SOCKET_EVENT_ACTION_TYPE = 'EMIT_SOCKET_EVENT';
-
-const createSocketMiddleware = (url, actionHandlers) => store => {
+const createSocketMiddleware = (url, eventToActionMappers) => store => {
   const socket = io.connect(url);
 
-  actionHandlers.forEach(({ action, handler }) =>
-    socket.on(action, message => store.dispatch(handler(message)))
+  eventToActionMappers.forEach(({ event, eventToAction }) =>
+    socket.on(event, message => store.dispatch(eventToAction(message)))
   );
 
   return next => action => {
-    if (action.type === EMIT_SOCKET_EVENT_ACTION_TYPE) {
-      const { eventName, message } = action.payload;
+    if (action.payload && action.payload.socketEvent) {
+      const { eventName, message } = action.payload.socketEvent;
       socket.emit(eventName, message);
     }
 

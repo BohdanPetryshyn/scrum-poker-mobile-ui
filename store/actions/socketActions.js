@@ -1,53 +1,72 @@
-import { EMIT_SOCKET_EVENT_ACTION_TYPE } from '../middleware/socketMiddleware';
-
-const defaultSocketActionHandler = (socketAction, storeAction) => ({
-  action: socketAction,
-  handler: message => ({
-    type: storeAction,
+const defaultSocketEventToActionMapper = (event, actionType) => ({
+  event,
+  eventToAction: message => ({
+    type: actionType,
     payload: message,
   }),
 });
 
-export const SOCKET_ACTIONS = {
+export const SOCKET_ACTION_TYPES = {
   SOCKET_CONNECTED: 'SOCKET_CONNECTED',
   SOCKET_DISCONNECTED: 'SOCKET_DISCONNECTED',
   STORY_CREATED: 'STORY_CREATED',
 };
 
-export const SOCKET_ACTION_HANDLERS = [
-  defaultSocketActionHandler('connect', SOCKET_ACTIONS.SOCKET_CONNECTED),
-  defaultSocketActionHandler('disconnect', SOCKET_ACTIONS.SOCKET_DISCONNECTED),
-  defaultSocketActionHandler('STORY_CREATED', SOCKET_ACTIONS.STORY_CREATED),
+export const EMITTED_SOCKET_EVENTS_ACTION_TYPES = {
+  HOST_SESSION: 'HOST_SESSION',
+  JOIN_SESSION: 'JOIN_SESSION',
+  CREATE_STORY: 'CREATE_STORY',
+};
+
+export const SOCKET_EVENT_TO_ACTION_MAPPERS = [
+  defaultSocketEventToActionMapper(
+    'connect',
+    SOCKET_ACTION_TYPES.SOCKET_CONNECTED
+  ),
+  defaultSocketEventToActionMapper(
+    'disconnect',
+    SOCKET_ACTION_TYPES.SOCKET_DISCONNECTED
+  ),
+  defaultSocketEventToActionMapper(
+    'STORY_CREATED',
+    SOCKET_ACTION_TYPES.STORY_CREATED
+  ),
 ];
 
 export const hostSession = sessionId => ({
-  type: EMIT_SOCKET_EVENT_ACTION_TYPE,
+  type: EMITTED_SOCKET_EVENTS_ACTION_TYPES.HOST_SESSION,
   payload: {
-    eventName: 'HOST_SESSION',
-    message: {
-      sessionId,
+    socketEvent: {
+      eventName: 'HOST_SESSION',
+      message: {
+        sessionId,
+      },
     },
   },
 });
 
 export const joinSession = sessionId => ({
-  type: EMIT_SOCKET_EVENT_ACTION_TYPE,
+  type: EMITTED_SOCKET_EVENTS_ACTION_TYPES.JOIN_SESSION,
   payload: {
-    eventName: 'JOIN_SESSION',
-    message: {
-      sessionId,
+    socketEvent: {
+      eventName: 'JOIN_SESSION',
+      message: {
+        sessionId,
+      },
     },
   },
 });
 
 export const createStory = (summary, description, sessionId) => ({
-  type: EMIT_SOCKET_EVENT_ACTION_TYPE,
+  type: EMITTED_SOCKET_EVENTS_ACTION_TYPES.CREATE_STORY,
   payload: {
-    eventName: 'CREATE_STORY',
-    message: {
-      summary,
-      description,
-      sessionId,
+    socketEvent: {
+      eventName: 'CREATE_STORY',
+      message: {
+        summary,
+        description,
+        sessionId,
+      },
     },
   },
 });

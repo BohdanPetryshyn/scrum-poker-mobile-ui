@@ -1,5 +1,5 @@
 import { Map, List } from 'immutable';
-import { SOCKET_ACTIONS } from '../actions/socketActions';
+import { SOCKET_ACTION_TYPES } from '../actions/socketActions';
 import Story from '../models/Story';
 import {
   CREATE_SESSION_ACTION_TYPES,
@@ -15,7 +15,7 @@ const initialState = Map({
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case SOCKET_ACTIONS.STORY_CREATED:
+    case SOCKET_ACTION_TYPES.STORY_CREATED:
       return state.merge({
         story: Story(action.payload.story),
         votingFinishTime: action.payload.votingFinishTime,

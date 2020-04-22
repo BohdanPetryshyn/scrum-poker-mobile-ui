@@ -6,7 +6,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import client from '../api/httpClient';
 import reducers from './reducers';
 import createSocketMiddleware from './middleware/socketMiddleware';
-import { SOCKET_ACTION_HANDLERS } from './actions/socketActions';
+import { SOCKET_EVENT_TO_ACTION_MAPPERS } from './actions/socketActions';
 
 const axiosMiddleware = createAxiosMiddleware(client, {
   returnRejectedPromiseOnError: true,
@@ -14,7 +14,7 @@ const axiosMiddleware = createAxiosMiddleware(client, {
 
 const socketMiddleware = createSocketMiddleware(
   'http://192.168.1.240:8080',
-  SOCKET_ACTION_HANDLERS
+  SOCKET_EVENT_TO_ACTION_MAPPERS
 );
 
 const middleware = applyMiddleware(thunk, axiosMiddleware, socketMiddleware);
