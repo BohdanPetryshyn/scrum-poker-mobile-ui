@@ -40,12 +40,12 @@ export const joinSession = sessionId => ({
   },
 });
 
-export const createStory = (name, description, sessionId) => ({
+export const createStory = (summary, description, sessionId) => ({
   type: EMIT_SOCKET_EVENT_ACTION_TYPE,
   payload: {
     eventName: 'CREATE_STORY',
     message: {
-      name,
+      summary,
       description,
       sessionId,
     },

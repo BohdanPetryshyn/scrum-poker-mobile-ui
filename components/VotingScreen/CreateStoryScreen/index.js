@@ -15,7 +15,7 @@ import { scaleSize } from '../../styles/size';
 import {
   getIsFormFilled,
   getStoryDescription,
-  getStoryName,
+  getStorySummary,
 } from '../../../store/selectors/createStoryScreen';
 import {
   createStoryFromStore,
@@ -23,9 +23,9 @@ import {
 } from '../../../store/actions/createStoryScreen';
 
 const CreateStoryScreen = ({
-  name,
+  summary,
   description,
-  setName,
+  setSummary,
   setDescription,
   isFormFilled,
   createStory,
@@ -35,8 +35,8 @@ const CreateStoryScreen = ({
       <Content>
         <Form>
           <Item>
-            <Label>Story Name</Label>
-            <Input value={name} onChangeText={setName} />
+            <Label>Story Summary</Label>
+            <Input value={summary} onChangeText={setSummary} />
           </Item>
           <Item>
             <Label>Story Description</Label>
@@ -57,22 +57,22 @@ const CreateStoryScreen = ({
 };
 
 CreateStoryScreen.propTypes = {
-  name: PropTypes.string.isRequired,
+  summary: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  setName: PropTypes.func.isRequired,
+  setSummary: PropTypes.func.isRequired,
   setDescription: PropTypes.func.isRequired,
   isFormFilled: PropTypes.bool.isRequired,
   createStory: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
-  name: getStoryName(state),
+  summary: getStorySummary(state),
   description: getStoryDescription(state),
   isFormFilled: getIsFormFilled(state),
 });
 
 const mapDispatchToProps = {
-  setName: name => setFieldValue('name', name),
+  setSummary: summary => setFieldValue('summary', summary),
   setDescription: description => setFieldValue('description', description),
   createStory: createStoryFromStore,
 };

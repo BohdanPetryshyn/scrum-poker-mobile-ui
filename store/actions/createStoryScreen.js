@@ -1,6 +1,6 @@
 import {
   getStoryDescription,
-  getStoryName,
+  getStorySummary,
 } from '../selectors/createStoryScreen';
 import { getSessionId } from '../selectors/session';
 import { createStory } from './socketActions';
@@ -19,9 +19,9 @@ export const setFieldValue = (fieldName, value) => ({
 
 export const createStoryFromStore = () => (dispatch, getState) => {
   const state = getState();
-  const storyName = getStoryName(state);
+  const storySummary = getStorySummary(state);
   const storyDescription = getStoryDescription(state);
   const sessionId = getSessionId(state);
 
-  dispatch(createStory(storyName, storyDescription, sessionId));
+  dispatch(createStory(storySummary, storyDescription, sessionId));
 };

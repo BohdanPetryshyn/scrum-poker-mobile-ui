@@ -3,8 +3,9 @@ import { createSelector } from 'reselect';
 export const getCreateStoryScreenState = state =>
   state.get('createStoryScreen');
 
-export const getStoryName = createSelector(getCreateStoryScreenState, state =>
-  state.get('name')
+export const getStorySummary = createSelector(
+  getCreateStoryScreenState,
+  state => state.get('summary')
 );
 
 export const getStoryDescription = createSelector(
@@ -13,6 +14,6 @@ export const getStoryDescription = createSelector(
 );
 
 export const getIsFormFilled = createSelector(
-  [getStoryName, getStoryDescription],
+  [getStorySummary, getStoryDescription],
   (name, description) => !!(name && description)
 );

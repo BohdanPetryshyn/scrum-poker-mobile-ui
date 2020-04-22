@@ -2,7 +2,7 @@ import { Map } from 'immutable';
 import { CREATE_STORY_SCREEN_ACTION_TYPES } from '../actions/createStoryScreen';
 
 const initialState = Map({
-  name: '',
+  summary: '',
   description: '',
 });
 
