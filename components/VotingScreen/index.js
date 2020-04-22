@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  getIsSessionHost,
-  getSessionStage,
-} from '../../store/selectors/session';
+import { getSessionStage } from '../../store/selectors/session';
 import { VOTING, RESULT } from '../../store/models/sessionState';
 import ResultScreen from './ResultScreen';
 import CreateStoryScreen from './CreateStoryScreen';
 import WaitingScreen from './WaitingScreen';
 import EstimateScreen from './EstimateScreen';
+import { getIsSessionHost } from '../../store/selectors/user';
 
 const VotingScreen = ({ sessionStage, isSessionHost }) => {
   if (sessionStage === VOTING) {
