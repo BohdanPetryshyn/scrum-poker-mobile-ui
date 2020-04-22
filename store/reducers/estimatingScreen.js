@@ -17,8 +17,8 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case SOCKET_ACTIONS.STORY_CREATED:
       return state.merge({
-        story: Story(action.payload.data.story),
-        votingFinishTime: action.payload.data.votingFinishTime,
+        story: Story(action.payload.story),
+        votingFinishTime: action.payload.votingFinishTime,
       });
     case CREATE_SESSION_ACTION_TYPES.SUCCESS:
     case JOIN_SESSION_ACTION_TYPES.SUCCESS:

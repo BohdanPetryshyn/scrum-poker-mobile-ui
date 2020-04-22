@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Container, H2 } from 'native-base';
+import { Container, H1 } from 'native-base';
 import { getVotingFinishTime } from '../../../store/selectors/estimatingScreen';
 
 const SECOND_MILLIS = 1000;
@@ -27,7 +27,7 @@ const VotingCountDown = ({ votingFinishTime }) => {
 
   return (
     <Container>
-      <H2>{`${minutes}:${seconds}`}</H2>
+      <H1>{`${minutes}:${seconds}`}</H1>
     </Container>
   );
 };
