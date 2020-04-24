@@ -5,6 +5,11 @@ const ack = (dispatch, socketEvent) => message => {
   if (!actionTypes) {
     return;
   }
+  if ((!message || message.error) && actionTypes[1]) {
+    dispatch({
+      type: actionTypes[1],
+    });
+  }
   if (message && actionTypes[0]) {
     dispatch({
       type: actionTypes[0],
@@ -12,11 +17,6 @@ const ack = (dispatch, socketEvent) => message => {
       meta: {
         socketEvent,
       },
-    });
-  }
-  if (!message && actionTypes[1]) {
-    dispatch({
-      type: actionTypes[1],
     });
   }
 };
