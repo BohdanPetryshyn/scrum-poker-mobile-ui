@@ -1,10 +1,7 @@
 import { Map } from 'immutable';
 
-import {
-  CREATE_SESSION_ACTION_TYPES,
-  JOIN_SESSION_ACTION_TYPES,
-} from '../actions/requestActions';
-import getOriginRequestActionPayload from '../getOriginRequestActionPayload';
+import getOriginSocketEventMessage from '../getOriginSocketEventMessage';
+import { RECEIVED_SOCKET_EVENT_ACTION_TYPES } from '../actions/socketActions';
 
 const initialState = Map({
   username: null,
@@ -13,14 +10,14 @@ const initialState = Map({
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_SESSION_ACTION_TYPES.SUCCESS:
+    case RECEIVED_SOCKET_EVENT_ACTION_TYPES.SESSION_CREATED:
       return Map({
-        username: getOriginRequestActionPayload(action).username,
+        username: getOriginSocketEventMessage(action).username,
         isHost: true,
       });
-    case JOIN_SESSION_ACTION_TYPES.SUCCESS:
+    case RECEIVED_SOCKET_EVENT_ACTION_TYPES.JOINED_SESSION:
       return Map({
-        username: getOriginRequestActionPayload(action).username,
+        username: getOriginSocketEventMessage(action).username,
         isHost: false,
       });
     default:

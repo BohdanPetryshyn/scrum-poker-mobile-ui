@@ -3,8 +3,7 @@ import {
   getTopic,
   getUsername,
 } from '../selectors/createSessionScreen';
-import { createSession } from './requestActions';
-import { hostSession } from './socketActions';
+import { createSession } from './socketActions';
 
 export const CREATE_SESSION_SCREEN_ACTION_TYPES = {
   SET_FIELD_VALUE: 'SET_CREATE_SESSION_FIELD_VALUE',
@@ -24,8 +23,5 @@ export const createSessionFromStore = () => (dispatch, getState) => {
   const topic = getTopic(state);
   const cardSchema = getCardSchema(state);
 
-  return dispatch(createSession(topic, cardSchema, username)).then(response => {
-    const { sessionId } = response.payload.data;
-    return dispatch(hostSession(sessionId));
-  });
+  return dispatch(createSession(username, topic, cardSchema));
 };

@@ -10,13 +10,15 @@ export const RECEIVED_SOCKET_EVENT_ACTION_TYPES = {
   SOCKET_CONNECTED: 'SOCKET_CONNECTED',
   SOCKET_DISCONNECTED: 'SOCKET_DISCONNECTED',
   STORY_CREATED: 'STORY_CREATED',
+  SESSION_CREATED: 'SESSION_CREATED',
+  JOINED_SESSION: 'JOINED_SESSION',
 };
 
 export const EMITTED_SOCKET_EVENT_ACTION_TYPES = {
-  HOST_SESSION: 'HOST_SESSION',
-  JOIN_SESSION: 'JOIN_SESSION',
   CREATE_STORY: 'CREATE_STORY',
   ESTIMATE_STORY: 'ESTIMATE_STORY',
+  CREATE_SESSION: 'CREATE_SESSION',
+  JOIN_SESSION: 'JOIN_SESSION',
 };
 
 export const SOCKET_EVENT_TO_ACTION_MAPPERS = [
@@ -34,26 +36,31 @@ export const SOCKET_EVENT_TO_ACTION_MAPPERS = [
   ),
 ];
 
-export const hostSession = sessionId => ({
-  type: EMITTED_SOCKET_EVENT_ACTION_TYPES.HOST_SESSION,
+export const createSession = (username, topic, cardSchema) => ({
+  type: EMITTED_SOCKET_EVENT_ACTION_TYPES.CREATE_SESSION,
   payload: {
     socketEvent: {
-      eventName: 'HOST_SESSION',
+      eventName: 'CREATE_SESSION',
       message: {
-        sessionId,
+        username,
+        topic,
+        cardSchema,
       },
+      actionTypes: [RECEIVED_SOCKET_EVENT_ACTION_TYPES.SESSION_CREATED],
     },
   },
 });
 
-export const joinSession = sessionId => ({
+export const joinSession = (username, sessionId) => ({
   type: EMITTED_SOCKET_EVENT_ACTION_TYPES.JOIN_SESSION,
   payload: {
     socketEvent: {
       eventName: 'JOIN_SESSION',
       message: {
+        username,
         sessionId,
       },
+      actionTypes: [RECEIVED_SOCKET_EVENT_ACTION_TYPES.JOINED_SESSION],
     },
   },
 });

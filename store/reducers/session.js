@@ -1,8 +1,4 @@
 import { Map } from 'immutable';
-import {
-  CREATE_SESSION_ACTION_TYPES,
-  JOIN_SESSION_ACTION_TYPES,
-} from '../actions/requestActions';
 import CardSchema from '../models/CardSchema';
 import { RECEIVED_SOCKET_EVENT_ACTION_TYPES } from '../actions/socketActions';
 import { VOTING } from '../models/sessionState';
@@ -16,13 +12,13 @@ const initialState = Map({
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case CREATE_SESSION_ACTION_TYPES.SUCCESS:
-    case JOIN_SESSION_ACTION_TYPES.SUCCESS:
+    case RECEIVED_SOCKET_EVENT_ACTION_TYPES.SESSION_CREATED:
+    case RECEIVED_SOCKET_EVENT_ACTION_TYPES.JOINED_SESSION:
       return Map({
-        sessionId: action.payload.data.sessionId,
-        topic: action.payload.data.topic,
-        stage: action.payload.data.stage,
-        cardSchema: CardSchema(action.payload.data.cardSchema),
+        sessionId: action.payload.sessionId,
+        topic: action.payload.topic,
+        stage: action.payload.stage,
+        cardSchema: CardSchema(action.payload.cardSchema),
       });
     case RECEIVED_SOCKET_EVENT_ACTION_TYPES.STORY_CREATED:
       return state.set('stage', VOTING);
