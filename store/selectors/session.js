@@ -56,3 +56,7 @@ export const getVotingFinishTime = createSelector(getCurrentVoting, voting => {
   console.log('VOTING:', voting);
   return voting.get('finishTime');
 });
+
+export const getVotingEstimates = createSelector(getCurrentVoting, voting =>
+  voting.get('estimates')
+);

@@ -19,6 +19,7 @@ import {
   getVotingStoryDescription,
   getVotingStorySummary,
 } from '../../../store/selectors/session';
+import Estimates from './Estimates';
 
 const EstimateScreen = ({ storySummary, storyDescription }) => {
   return (
@@ -34,8 +35,11 @@ const EstimateScreen = ({ storySummary, storyDescription }) => {
               <Text>{storyDescription}</Text>
             </Col>
           </Row>
+          <Row size={7}>
+            <Estimates />
+          </Row>
           <Row
-            size={8}
+            size={1}
             style={{
               alignItems: 'flex-start',
             }}

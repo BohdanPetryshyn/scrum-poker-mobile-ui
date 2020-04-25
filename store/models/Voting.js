@@ -15,7 +15,7 @@ class Voting extends Record({
       story: Story(voting.story),
       estimates:
         voting.estimates &&
-        voting.estimates.map(estimate => new Estimate(estimate)),
+        List(voting.estimates.map(estimate => new Estimate(estimate))),
     });
   }
 }
