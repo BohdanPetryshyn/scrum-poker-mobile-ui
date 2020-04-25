@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Container, H1 } from 'native-base';
-import { getVotingFinishTime } from '../../../store/selectors/estimatingScreen';
+import { getVotingFinishTime } from '../../../store/selectors/session';
 
 const SECOND_MILLIS = 1000;
 const MINUTE_MILLIS = SECOND_MILLIS * 60;

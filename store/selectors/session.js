@@ -25,3 +25,34 @@ export const getSessionAvailableEstimates = createSelector(
   getSessionCardSchema,
   cardSchema => cardSchema.get('estimates')
 );
+
+export const getVotings = createSelector(getSessionState, sessionState =>
+  sessionState.get('votings')
+);
+
+export const getCurrentVoting = createSelector(
+  getVotings,
+  votings => votings && votings.get(0)
+);
+
+export const getVotingStory = createSelector(getCurrentVoting, voting =>
+  voting.get('story')
+);
+
+export const getVotingStoryId = createSelector(getVotingStory, story =>
+  story.get('storyId')
+);
+
+export const getVotingStorySummary = createSelector(getVotingStory, story => {
+  console.log('STORY', story);
+  return story.get('summary');
+});
+
+export const getVotingStoryDescription = createSelector(getVotingStory, story =>
+  story.get('description')
+);
+
+export const getVotingFinishTime = createSelector(getCurrentVoting, voting => {
+  console.log('VOTING:', voting);
+  return voting.get('finishTime');
+});

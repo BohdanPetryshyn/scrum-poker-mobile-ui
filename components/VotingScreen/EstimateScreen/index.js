@@ -14,11 +14,11 @@ import {
 } from 'native-base';
 import { scaleSize } from '../../styles/size';
 import VotingCountDown from './VotingCountDown';
-import {
-  getStoryDescription,
-  getStorySummary,
-} from '../../../store/selectors/estimatingScreen';
 import EstimatePicker from './EstimatePicker';
+import {
+  getVotingStoryDescription,
+  getVotingStorySummary,
+} from '../../../store/selectors/session';
 
 const EstimateScreen = ({ storySummary, storyDescription }) => {
   return (
@@ -57,8 +57,8 @@ EstimateScreen.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  storySummary: getStorySummary(state),
-  storyDescription: getStoryDescription(state),
+  storySummary: getVotingStorySummary(state),
+  storyDescription: getVotingStoryDescription(state),
 });
 
 export default connect(mapStateToProps)(EstimateScreen);

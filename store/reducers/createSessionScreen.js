@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
     case FETCH_CARD_SCHEMAS_ACTION_TYPES.SUCCESS:
       return state.set(
         'cardSchemas',
-        List(action.payload.data.map(CardSchema))
+        List(action.payload.data.map(cardSchema => new CardSchema(cardSchema)))
       );
     default:
       return state;

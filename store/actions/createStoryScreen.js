@@ -3,7 +3,7 @@ import {
   getStorySummary,
 } from '../selectors/createStoryScreen';
 import { getSessionId } from '../selectors/session';
-import { createStory } from './socketActions';
+import { startVoting } from './socketActions';
 
 export const CREATE_STORY_SCREEN_ACTION_TYPES = {
   SET_FIELD_VALUE: 'SET_CREATE_STORY_FIELD_VALUE',
@@ -19,9 +19,9 @@ export const setFieldValue = (fieldName, value) => ({
 
 export const createStoryFromStore = () => (dispatch, getState) => {
   const state = getState();
-  const storySummary = getStorySummary(state);
-  const storyDescription = getStoryDescription(state);
+  const summary = getStorySummary(state);
+  const description = getStoryDescription(state);
   const sessionId = getSessionId(state);
 
-  dispatch(createStory(storySummary, storyDescription, sessionId));
+  dispatch(startVoting({ summary, description }, sessionId));
 };

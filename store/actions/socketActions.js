@@ -9,13 +9,13 @@ const defaultSocketEventToActionMapper = (event, actionType) => ({
 export const RECEIVED_SOCKET_EVENT_ACTION_TYPES = {
   SOCKET_CONNECTED: 'SOCKET_CONNECTED',
   SOCKET_DISCONNECTED: 'SOCKET_DISCONNECTED',
-  STORY_CREATED: 'STORY_CREATED',
+  VOTING_STARTED: 'VOTING_STARTED',
   SESSION_CREATED: 'SESSION_CREATED',
   JOINED_SESSION: 'JOINED_SESSION',
 };
 
 export const EMITTED_SOCKET_EVENT_ACTION_TYPES = {
-  CREATE_STORY: 'CREATE_STORY',
+  START_VOTING: 'START_VOTING',
   ESTIMATE_STORY: 'ESTIMATE_STORY',
   CREATE_SESSION: 'CREATE_SESSION',
   JOIN_SESSION: 'JOIN_SESSION',
@@ -31,8 +31,8 @@ export const SOCKET_EVENT_TO_ACTION_MAPPERS = [
     RECEIVED_SOCKET_EVENT_ACTION_TYPES.SOCKET_DISCONNECTED
   ),
   defaultSocketEventToActionMapper(
-    'STORY_CREATED',
-    RECEIVED_SOCKET_EVENT_ACTION_TYPES.STORY_CREATED
+    'VOTING_STARTED',
+    RECEIVED_SOCKET_EVENT_ACTION_TYPES.VOTING_STARTED
   ),
 ];
 
@@ -65,14 +65,13 @@ export const joinSession = (username, sessionId) => ({
   },
 });
 
-export const createStory = (summary, description, sessionId) => ({
-  type: EMITTED_SOCKET_EVENT_ACTION_TYPES.CREATE_STORY,
+export const startVoting = (story, sessionId) => ({
+  type: EMITTED_SOCKET_EVENT_ACTION_TYPES.START_VOTING,
   payload: {
     socketEvent: {
-      eventName: 'CREATE_STORY',
+      eventName: 'START_VOTING',
       message: {
-        summary,
-        description,
+        story,
         sessionId,
       },
     },

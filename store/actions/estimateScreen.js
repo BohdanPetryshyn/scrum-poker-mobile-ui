@@ -1,9 +1,9 @@
-import { getStoryId } from '../selectors/estimatingScreen';
 import { estimateStory } from './socketActions';
+import { getVotingStoryId } from '../selectors/session';
 
 export const estimateStoryFromStore = estimate => (dispatch, getState) => {
   const state = getState();
-  const storyId = getStoryId(state);
+  const storyId = getVotingStoryId(state);
 
   dispatch(estimateStory(estimate, storyId));
 };
