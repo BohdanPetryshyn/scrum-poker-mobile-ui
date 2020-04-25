@@ -2,7 +2,7 @@ import { Record } from 'immutable';
 
 const User = Record({
   username: '',
-  isVoted: false,
+  isHost: false,
 });
 
 export default User;
