@@ -16,10 +16,7 @@ export default (state = initialState, action) => {
         isHost: true,
       });
     case RECEIVED_SOCKET_EVENT_ACTION_TYPES.JOINED_SESSION:
-      return Map({
-        username: getOriginSocketEventMessage(action).username,
-        isHost: false,
-      });
+      return Map(action.payload.user);
     default:
       return state;
   }
