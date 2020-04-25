@@ -14,24 +14,24 @@ const initialState = Map({
   votings: null,
 });
 
-const toImmutableSessionState = session =>
-  Map({
-    sessionId: session.sessionId,
-    topic: session.topic,
-    stage: session.stage,
-    cardSchema: CardSchema(session.cardSchema),
-    participants: List(
-      session.participants.map(participant => new Participant(participant))
-    ),
-    votings: List(session.votings.map(voting => new Voting(voting))),
-  });
-
 export default (state = initialState, action) => {
   switch (action.type) {
     case RECEIVED_SOCKET_EVENT_ACTION_TYPES.SESSION_CREATED:
-      return toImmutableSessionState(action.payload);
     case RECEIVED_SOCKET_EVENT_ACTION_TYPES.JOINED_SESSION:
-      return toImmutableSessionState(action.payload.pokerSession);
+      return Map({
+        sessionId: action.payload.pokerSession.sessionId,
+        topic: action.payload.pokerSession.topic,
+        stage: action.payload.pokerSession.stage,
+        cardSchema: CardSchema(action.payload.pokerSession.cardSchema),
+        participants: List(
+          action.payload.pokerSession.participants.map(
+            participant => new Participant(participant)
+          )
+        ),
+        votings: List(
+          action.payload.pokerSession.votings.map(voting => new Voting(voting))
+        ),
+      });
     case RECEIVED_SOCKET_EVENT_ACTION_TYPES.VOTING_STARTED:
       return state
         .set('stage', VOTING)
