@@ -1,8 +1,8 @@
 import { Record } from 'immutable';
 
-const Participant = Record({
+const User = Record({
   username: '',
   isVoted: false,
 });
 
-export default Participant;
+export default User;

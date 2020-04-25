@@ -1,16 +1,20 @@
 import io from 'socket.io-client';
 
+const isError = message => !message || message.error;
+
 const ack = (dispatch, socketEvent) => message => {
   const { actionTypes } = socketEvent;
   if (!actionTypes) {
     return;
   }
-  if ((!message || message.error) && actionTypes[1]) {
+  if (isError(message) && actionTypes[1]) {
+    console.log('ERROR_MESSAGE', message);
     dispatch({
       type: actionTypes[1],
     });
   }
-  if (message && actionTypes[0]) {
+  if (!isError(message) && actionTypes[0]) {
+    console.log('SUCCESS_MESSAGE', message);
     dispatch({
       type: actionTypes[0],
       payload: message,
