@@ -4,7 +4,6 @@ import { RECEIVED_SOCKET_EVENT_ACTION_TYPES } from '../actions/socketActions';
 import { VOTING } from '../models/sessionState';
 import User from '../models/User';
 import Voting from '../models/Voting';
-import Estimate from '../models/Estimate';
 
 const initialState = Map({
   sessionId: null,
@@ -38,13 +37,7 @@ export default (state = initialState, action) => {
           votings.unshift(new Voting(action.payload))
         );
     case RECEIVED_SOCKET_EVENT_ACTION_TYPES.USER_JOINED:
-      return state
-        .update('users', users => users.push(User(action.payload)))
-        .updateIn(['votings', 0, 'estimates'], estimates =>
-          state.get('stage') === VOTING
-            ? estimates.push(new Estimate({ user: action.payload }))
-            : estimates
-        );
+      return state.update('users', users => users.push(User(action.payload)));
     default:
       return state;
   }
