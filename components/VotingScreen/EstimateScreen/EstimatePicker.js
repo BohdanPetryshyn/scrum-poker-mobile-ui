@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Picker } from 'native-base';
 import { getSessionAvailableEstimates } from '../../../store/selectors/session';
-import { getEstimate } from '../../../store/selectors/estimatingScreen';
 import { estimateStory } from '../../../store/actions/socketActions';
+import { getUserCard } from '../../../store/selectors/common';
 
 const EstimatePicker = ({ estimates, selectedEstimate, setEstimate }) => {
   const renderEstimates = () =>
@@ -32,7 +32,7 @@ EstimatePicker.propTypes = {
 
 const mapStateToProps = state => ({
   estimates: getSessionAvailableEstimates(state),
-  selectedEstimate: getEstimate(state),
+  selectedEstimate: getUserCard(state),
 });
 
 const mapDispatchToProps = {

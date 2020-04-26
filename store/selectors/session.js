@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { isNil } from 'lodash';
 
-const getSessionState = state => state.get('session');
+export const getSessionState = state => state.get('session');
 
 export const getSessionId = createSelector(getSessionState, sessionState =>
   sessionState.get('sessionId')
@@ -34,9 +34,8 @@ export const getVotings = createSelector(getSessionState, sessionState =>
   sessionState.get('votings')
 );
 
-export const getCurrentVoting = createSelector(
-  getVotings,
-  votings => votings && votings.get(0)
+export const getCurrentVoting = createSelector(getSessionState, sessionState =>
+  sessionState.get('currentVoting')
 );
 
 export const getVotingStory = createSelector(getCurrentVoting, voting =>
@@ -48,7 +47,6 @@ export const getVotingStoryId = createSelector(getVotingStory, story =>
 );
 
 export const getVotingStorySummary = createSelector(getVotingStory, story => {
-  console.log('STORY', story);
   return story.get('summary');
 });
 
@@ -57,7 +55,6 @@ export const getVotingStoryDescription = createSelector(getVotingStory, story =>
 );
 
 export const getVotingFinishTime = createSelector(getCurrentVoting, voting => {
-  console.log('VOTING:', voting);
   return voting.get('finishTime');
 });
 
@@ -65,16 +62,17 @@ export const getVotingEstimates = createSelector(getCurrentVoting, voting =>
   voting.get('estimates')
 );
 
-export const getUserEstimates = createSelector(
-  [getUsers, getVotingEstimates],
-  (users, estimates) => {
-    const userCards = estimates
-      .groupBy(estimate => estimate.user.userId)
-      .map(estimate => estimate.getIn([0, 'card']));
+export const getUserCards = createSelector(getVotingEstimates, estimates =>
+  estimates
+    .groupBy(estimate => estimate.user.userId)
+    .map(estimate => estimate.getIn([0, 'card']))
+);
 
-    return users.map(user => ({
+export const getUserEstimates = createSelector(
+  [getUsers, getUserCards],
+  (users, userCards) =>
+    users.map(user => ({
       user,
       card: userCards.get(user.userId),
-    }));
-  }
+    }))
 );

@@ -12,6 +12,7 @@ const initialState = Map({
   stage: null,
   users: null,
   votings: null,
+  currentVoting: null,
 });
 
 export default (state = initialState, action) => {
@@ -29,15 +30,19 @@ export default (state = initialState, action) => {
         votings: List(
           action.payload.pokerSession.votings.map(voting => new Voting(voting))
         ),
+        currentVoting:
+          action.payload.pokerSession.currentVoting &&
+          new Voting(action.payload.pokerSession.currentVoting),
       });
     case RECEIVED_SOCKET_EVENT_ACTION_TYPES.VOTING_STARTED:
-      return state
-        .set('stage', VOTING)
-        .update('votings', votings =>
-          votings.unshift(new Voting(action.payload))
-        );
+      return state.merge({
+        stage: VOTING,
+        currentVoting: new Voting(action.payload),
+      });
     case RECEIVED_SOCKET_EVENT_ACTION_TYPES.USER_JOINED:
       return state.update('users', users => users.push(User(action.payload)));
+    case RECEIVED_SOCKET_EVENT_ACTION_TYPES.USER_CARD_CHANGED:
+      return state.set('currentVoting', new Voting(action.payload));
     default:
       return state;
   }
