@@ -83,14 +83,13 @@ export const startVoting = (story, sessionId) => ({
   },
 });
 
-export const estimateStory = (estimate, storyId) => ({
+export const estimateStory = card => ({
   type: EMITTED_SOCKET_EVENT_ACTION_TYPES.ESTIMATE_STORY,
   payload: {
     socketEvent: {
-      eventName: 'ESTIMATE_STORY',
+      eventName: 'SELECT_CARD',
       message: {
-        estimate,
-        storyId,
+        card,
       },
     },
   },

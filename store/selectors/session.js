@@ -26,6 +26,10 @@ export const getSessionAvailableEstimates = createSelector(
   cardSchema => cardSchema.get('estimates')
 );
 
+export const getUsers = createSelector(getSessionState, sessionState =>
+  sessionState.get('users')
+);
+
 export const getVotings = createSelector(getSessionState, sessionState =>
   sessionState.get('votings')
 );
@@ -59,4 +63,18 @@ export const getVotingFinishTime = createSelector(getCurrentVoting, voting => {
 
 export const getVotingEstimates = createSelector(getCurrentVoting, voting =>
   voting.get('estimates')
+);
+
+export const getUserEstimates = createSelector(
+  [getUsers, getVotingEstimates],
+  (users, estimates) => {
+    const userCards = estimates
+      .groupBy(estimate => estimate.user.userId)
+      .map(estimate => estimate.getIn([0, 'card']));
+
+    return users.map(user => ({
+      user,
+      card: userCards.get(user.userId),
+    }));
+  }
 );

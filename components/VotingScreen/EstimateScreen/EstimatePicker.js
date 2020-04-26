@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Picker } from 'native-base';
 import { getSessionAvailableEstimates } from '../../../store/selectors/session';
 import { getEstimate } from '../../../store/selectors/estimatingScreen';
-import { estimateStoryFromStore } from '../../../store/actions/estimateScreen';
+import { estimateStory } from '../../../store/actions/socketActions';
 
 const EstimatePicker = ({ estimates, selectedEstimate, setEstimate }) => {
   const renderEstimates = () =>
@@ -36,7 +36,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  setEstimate: estimateStoryFromStore,
+  setEstimate: estimateStory,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EstimatePicker);

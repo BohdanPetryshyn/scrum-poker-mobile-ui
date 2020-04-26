@@ -8,7 +8,7 @@ import Estimate from '../../../store/models/Estimate';
 import { RESULT, VOTING } from '../../../store/models/sessionState';
 import {
   getSessionStage,
-  getVotingEstimates,
+  getUserEstimates,
 } from '../../../store/selectors/session';
 
 const renderCard = card => card || '--';
@@ -39,7 +39,7 @@ Estimates.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  estimates: getVotingEstimates(state),
+  estimates: getUserEstimates(state),
   stage: getSessionStage(state),
 });
 
