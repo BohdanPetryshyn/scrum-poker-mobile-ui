@@ -1,7 +1,7 @@
 import { Map, List } from 'immutable';
 import CardSchema from '../models/CardSchema';
 import { RECEIVED_SOCKET_EVENT_ACTION_TYPES } from '../actions/socketActions';
-import { VOTING } from '../models/sessionState';
+import { RESULT, VOTING } from '../models/sessionState';
 import User from '../models/User';
 import Voting from '../models/Voting';
 
@@ -39,6 +39,8 @@ export default (state = initialState, action) => {
         stage: VOTING,
         currentVoting: new Voting(action.payload),
       });
+    case RECEIVED_SOCKET_EVENT_ACTION_TYPES.VOTING_ENDED:
+      return state.set('stage', RESULT);
     case RECEIVED_SOCKET_EVENT_ACTION_TYPES.USER_JOINED:
       return state.update('users', users => users.push(User(action.payload)));
     case RECEIVED_SOCKET_EVENT_ACTION_TYPES.USER_CARD_CHANGED:
