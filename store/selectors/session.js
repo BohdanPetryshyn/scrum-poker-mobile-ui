@@ -1,6 +1,8 @@
 import { createSelector } from 'reselect';
 import { isNil } from 'lodash';
 
+import Estimate from '../models/Estimate';
+
 export const getSessionState = state => state.get('session');
 
 export const getSessionId = createSelector(getSessionState, sessionState =>
@@ -71,8 +73,11 @@ export const getUserCards = createSelector(getVotingEstimates, estimates =>
 export const getUserEstimates = createSelector(
   [getUsers, getUserCards],
   (users, userCards) =>
-    users.map(user => ({
-      user,
-      card: userCards.get(user.userId),
-    }))
+    users.map(
+      user =>
+        new Estimate({
+          user,
+          card: userCards.get(user.userId),
+        })
+    )
 );
