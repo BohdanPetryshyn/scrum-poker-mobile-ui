@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import connect from 'react-redux';
+import { connect } from 'react-redux';
 
 import { Content, H1 } from 'native-base';
 import { getAverageEstimate } from '../../../store/selectors/session';

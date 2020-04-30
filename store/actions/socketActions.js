@@ -20,6 +20,7 @@ export const RECEIVED_SOCKET_EVENT_ACTION_TYPES = {
 export const EMITTED_SOCKET_EVENT_ACTION_TYPES = {
   START_VOTING: 'START_VOTING',
   ESTIMATE_STORY: 'ESTIMATE_STORY',
+  SET_VOTING_RESULT: 'SET_VOTING_RESULT',
   CREATE_SESSION: 'CREATE_SESSION',
   JOIN_SESSION: 'JOIN_SESSION',
 };
@@ -98,6 +99,18 @@ export const estimateStory = card => ({
   payload: {
     socketEvent: {
       eventName: 'SELECT_CARD',
+      message: {
+        card,
+      },
+    },
+  },
+});
+
+export const setVotingResult = card => ({
+  type: EMITTED_SOCKET_EVENT_ACTION_TYPES.SET_VOTING_RESULT,
+  payload: {
+    socketEvent: {
+      eventName: 'SET_VOTING_RESULT',
       message: {
         card,
       },
