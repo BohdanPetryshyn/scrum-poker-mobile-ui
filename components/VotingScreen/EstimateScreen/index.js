@@ -14,7 +14,7 @@ import {
 } from 'native-base';
 import { scaleSize } from '../../styles/size';
 import VotingCountDown from './VotingCountDown';
-import EstimatePicker from './EstimatePicker';
+import EstimatePicker from './VotingEstimatePicker';
 import {
   getVotingStoryDescription,
   getVotingStorySummary,
