@@ -14,7 +14,7 @@ import {
   Text,
 } from 'native-base';
 import { scaleSize } from '../../styles/size';
-import Estimates from '../EstimateScreen/Estimates';
+import Estimates from '../Estimates';
 import {
   getVotingStoryDescription,
   getVotingStorySummary,

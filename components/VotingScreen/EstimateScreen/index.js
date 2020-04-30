@@ -19,7 +19,7 @@ import {
   getVotingStoryDescription,
   getVotingStorySummary,
 } from '../../../store/selectors/session';
-import Estimates from './Estimates';
+import Estimates from '../Estimates';
 
 const EstimateScreen = ({ storySummary, storyDescription }) => {
   return (
