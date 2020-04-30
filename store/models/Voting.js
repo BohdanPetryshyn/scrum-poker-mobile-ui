@@ -8,6 +8,7 @@ class Voting extends Record({
   story: Story(),
   estimates: List(),
   finishTime: Date.now(),
+  resultCard: null,
 }) {
   constructor(voting) {
     super({
