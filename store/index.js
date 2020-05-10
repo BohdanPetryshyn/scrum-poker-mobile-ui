@@ -1,5 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import createAxiosMiddleware from 'redux-axios-middleware';
+import { createEpicMiddleware } from 'redux-observable';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
@@ -17,6 +18,17 @@ const socketMiddleware = createSocketMiddleware(
   SOCKET_EVENT_TO_ACTION_MAPPERS
 );
 
-const middleware = applyMiddleware(thunk, axiosMiddleware, socketMiddleware);
+const epicMiddleware = createEpicMiddleware();
 
-export default createStore(reducers, composeWithDevTools(middleware));
+const middlewareEnhancer = applyMiddleware(
+  thunk,
+  axiosMiddleware,
+  socketMiddleware,
+  epicMiddleware
+);
+
+const store = createStore(reducers, composeWithDevTools(middlewareEnhancer));
+
+axiosMiddleware.run();
+
+export default store;
