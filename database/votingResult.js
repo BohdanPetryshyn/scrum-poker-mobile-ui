@@ -1,4 +1,4 @@
-const CREATE_VOTING_RESULT = `INSERT INTO votingResult VALUES(?, ?, ?)`;
+const CREATE_VOTING_RESULT = `INSERT INTO votingResult VALUES(?, ?, ?, ?)`;
 
 export const createVotingResultWithDb = db => (
   sessionId,
@@ -8,7 +8,12 @@ export const createVotingResultWithDb = db => (
   new Promise((resolve, reject) =>
     db.transaction(
       tx =>
-        tx.executeSql(CREATE_VOTING_RESULT, [sessionId, storyId, resultCard]),
+        tx.executeSql(CREATE_VOTING_RESULT, [
+          sessionId,
+          storyId,
+          resultCard,
+          Date.now(),
+        ]),
       reject,
       resolve
     )

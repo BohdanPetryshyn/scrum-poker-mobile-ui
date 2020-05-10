@@ -2,8 +2,10 @@ const CREATE_SESSION_TABLE = `
   CREATE TABLE IF NOT EXISTS session(
     id VARCHAR(24) NOT NULL,
     topic VARCHAR(100) NOT NULL,
+    createdAt INTEGER NOT NULL,
     PRIMARY KEY(id)
   );
+  CREATE INDEX sessionCreatedAtIndex ON session(createdAt);
 `;
 
 const CREATE_STORY_TABLE = `
@@ -19,10 +21,12 @@ const CREATE_VOTING_RESULT_TABLE = `
     sessionId VARCHAR(24) NOT NULL,
     storyId VARCHAR(24) NOT NULL,
     resultCard VARCHAR(100) NOT NULL,
+    createdAt INTEGER NOT NULL,
     PRIMARY KEY(sessionId, storyId),
     FOREIGN KEY(sessionId) REFERENCES session(id),
     FOREIGN KEY(storyId) REFERENCES story(id)
   );
+  CREATE INDEX votingResultCreatedAtIndex ON votingResult(createdAt);
 `;
 
 export default db => () =>
