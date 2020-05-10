@@ -18,7 +18,6 @@ const Estimates = ({ estimates, stage }) => {
     <Container>
       <List>
         {estimates.map(estimate => {
-          console.log('ESTIMATE', estimate);
           return (
             <ListItem key={estimate.user.username} selected={!!estimate.card}>
               <Left>
