@@ -29,8 +29,7 @@ const ResultScreen = ({ storySummary, storyDescription, isHost }) => {
       <Content contentContainerStyle={{ flex: 1, margin: scaleSize(10) }}>
         <Grid>
           <Row size={1}>
-            <Col size={1} />
-            <Col size={4}>
+            <Col>
               <H1>{storySummary}</H1>
               <Text>{storyDescription}</Text>
             </Col>
