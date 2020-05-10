@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Button, Text } from 'native-base';
+import { Button, Item, Label, Text, Form } from 'native-base';
 
 import EstimatePicker from '../EstimatePicker';
 import { getSelectedEstimate } from '../../../store/selectors/resultScreen';
@@ -17,12 +17,15 @@ const ResultEstimatePicker = ({
   submitResultEstimate,
 }) => {
   return (
-    <>
-      <EstimatePicker
-        placeholder="Choose the final estimate"
-        selectedEstimate={selectedEstimate}
-        setEstimate={setEstimate}
-      />
+    <Form style={{ width: '100%' }}>
+      <Item>
+        <Label>Result Estimate</Label>
+        <EstimatePicker
+          placeholder="Choose the final estimate"
+          selectedEstimate={selectedEstimate}
+          setEstimate={setEstimate}
+        />
+      </Item>
       <Button
         style={{ marginTop: scaleSize(30) }}
         block
@@ -31,7 +34,7 @@ const ResultEstimatePicker = ({
       >
         <Text>Set Result Estimate</Text>
       </Button>
-    </>
+    </Form>
   );
 };
 

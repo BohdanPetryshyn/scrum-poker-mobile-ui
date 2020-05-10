@@ -35,23 +35,16 @@ const ResultScreen = ({ storySummary, storyDescription, isHost }) => {
               <Text>{storyDescription}</Text>
             </Col>
           </Row>
-          <Row size={7}>
+          <Row size={6}>
             <Estimates />
           </Row>
           <Row
-            size={1}
+            size={2}
             style={{
               alignItems: 'flex-start',
             }}
           >
-            {isHost ? (
-              <Item style={{ width: '100%' }}>
-                <Label>Result Estimate</Label>
-                <ResultEstimatePicker />
-              </Item>
-            ) : (
-              <AverageEstimate />
-            )}
+            {isHost ? <ResultEstimatePicker /> : <AverageEstimate />}
           </Row>
         </Grid>
       </Content>
