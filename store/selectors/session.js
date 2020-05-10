@@ -36,6 +36,14 @@ export const getVotings = createSelector(getSessionState, sessionState =>
   sessionState.get('votings')
 );
 
+export const getVotingResults = createSelector(getVotings, votings =>
+  votings.map(voting => ({
+    votingId: voting.get('votingId'),
+    storySummary: voting.getIn(['story', 'summary']),
+    resultCard: voting.get('resultCard'),
+  }))
+);
+
 export const getCurrentVoting = createSelector(getSessionState, sessionState =>
   sessionState.get('currentVoting')
 );
