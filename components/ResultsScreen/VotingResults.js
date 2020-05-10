@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 import { Container, Left, List, ListItem, Right, Text } from 'native-base';
 import { getVotingResults } from '../../store/selectors/session';
@@ -26,7 +27,7 @@ const VotingResults = ({ votingResults }) => {
 };
 
 VotingResults.propTypes = {
-  votingResults: PropTypes.arrayOf(
+  votingResults: ImmutablePropTypes.listOf(
     PropTypes.shape({
       votingId: PropTypes.string.isRequired,
       storySummary: PropTypes.string.isRequired,
