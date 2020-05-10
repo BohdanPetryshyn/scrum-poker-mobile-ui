@@ -2862,7 +2862,7 @@ expo-permissions@~8.1.0:
   resolved "https://npm.hubteam.com/npm-nexus/repository/npm-all/expo-permissions/-/expo-permissions-8.1.0.tgz#a7f2ee91ba76ce3a467e7b10adaa9ca5201b226f"
   integrity sha512-QBHD+1J9+sGFnhoEGzMRchPweeEE0OJ9ehG/0l1BMRBA7qsLS9vRC1FTJ55NwjI0Kr4RTha9r6ZX1kZHT09f/w==
 
-expo-sqlite@~8.1.0:
+expo-sqlite@^8.1.0, expo-sqlite@~8.1.0:
   version "8.1.0"
   resolved "https://npm.hubteam.com/npm-nexus/repository/npm-all/expo-sqlite/-/expo-sqlite-8.1.0.tgz#858eb28e1143db281de8a49c99b4a953a81d0834"
   integrity sha512-ziw6dbV1/sZErDkoGjG0afokyuKQqDtUuJglbLz9rQ6zNS1ceF3AjuEyfsWPDc2LL+QEdcnQODW7VUJelIk+0Q==
