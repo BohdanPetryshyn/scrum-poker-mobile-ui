@@ -2,37 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import {
-  Col,
-  Container,
-  Content,
-  Grid,
-  H1,
-  Item,
-  Label,
-  Row,
-  Text,
-} from 'native-base';
+import { Container, Content, Grid, Row } from 'native-base';
 import { scaleSize } from '../../styles/size';
 import Estimates from '../Estimates';
-import {
-  getVotingStoryDescription,
-  getVotingStorySummary,
-} from '../../../store/selectors/session';
 import ResultEstimatePicker from './ResultEstimatePicker';
 import AverageEstimate from './AverageEstimate';
 import { getIsSessionHost } from '../../../store/selectors/user';
+import StoryHeader from '../../StoryHeader';
 
-const ResultScreen = ({ storySummary, storyDescription, isHost }) => {
+const ResultScreen = ({ isHost }) => {
   return (
     <Container>
       <Content contentContainerStyle={{ flex: 1, margin: scaleSize(10) }}>
         <Grid>
           <Row size={1}>
-            <Col>
-              <H1>{storySummary}</H1>
-              <Text>{storyDescription}</Text>
-            </Col>
+            <StoryHeader />
           </Row>
           <Row size={6}>
             <Estimates />
@@ -52,14 +36,10 @@ const ResultScreen = ({ storySummary, storyDescription, isHost }) => {
 };
 
 ResultScreen.propTypes = {
-  storySummary: PropTypes.string.isRequired,
-  storyDescription: PropTypes.string.isRequired,
   isHost: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = state => ({
-  storySummary: getVotingStorySummary(state),
-  storyDescription: getVotingStoryDescription(state),
   isHost: getIsSessionHost(state),
 });
 
