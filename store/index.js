@@ -6,6 +6,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import client from '../api/httpClient';
 import reducers from './reducers';
+import epics from './epics';
 import createSocketMiddleware from './middleware/socketMiddleware';
 import { SOCKET_EVENT_TO_ACTION_MAPPERS } from './actions/socketActions';
 
@@ -29,6 +30,6 @@ const middlewareEnhancer = applyMiddleware(
 
 const store = createStore(reducers, composeWithDevTools(middlewareEnhancer));
 
-axiosMiddleware.run();
+axiosMiddleware.run(epics);
 
 export default store;
