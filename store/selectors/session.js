@@ -75,7 +75,7 @@ export const getVotingEstimates = createSelector(getCurrentVoting, voting =>
 export const getAverageEstimate = createSelector(
   getVotingEstimates,
   estimates => {
-    const sum = estimates.reduce((acc, estimate) => acc + estimate, 0);
+    const sum = estimates.reduce((acc, estimate) => acc + estimate.card, 0);
     return sum / estimates.size;
   }
 );
