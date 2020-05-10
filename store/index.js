@@ -30,6 +30,6 @@ const middlewareEnhancer = applyMiddleware(
 
 const store = createStore(reducers, composeWithDevTools(middlewareEnhancer));
 
-axiosMiddleware.run(epics);
+epicMiddleware.run(epics);
 
 export default store;
