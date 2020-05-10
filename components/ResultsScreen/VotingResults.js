@@ -31,7 +31,8 @@ VotingResults.propTypes = {
     PropTypes.shape({
       votingId: PropTypes.string.isRequired,
       storySummary: PropTypes.string.isRequired,
-      resultCard: PropTypes.string.isRequired,
+      resultCard: PropTypes.oneOf(PropTypes.string, PropTypes.number)
+        .isRequired,
     }).isRequired
   ),
 };
