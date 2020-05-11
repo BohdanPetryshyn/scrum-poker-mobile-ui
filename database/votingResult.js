@@ -1,12 +1,13 @@
 const CREATE_VOTING_RESULT = `INSERT INTO votingResult VALUES(?, ?, ?, ?)`;
 const GET_VOTINGS_POPULATED = `
-  SELECT 
+  SELECT
+    session.id as sessionId,
     session.topic as sessionTopic, 
     story.summary as storySummary,
     votingResult.resultCard
   FROM session
   LEFT JOIN votingResult ON votingResult.sessionId = session.id
-  INNER JOIN story ON story.id = votingResult.storyId
+  LEFT JOIN story ON story.id = votingResult.storyId
   ORDER BY session.createdAt DESC, votingResult.createdAt DESC;
 `;
 
