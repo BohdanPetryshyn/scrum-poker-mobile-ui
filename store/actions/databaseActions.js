@@ -5,6 +5,7 @@ export const DATABASE_ACTIONS = {
   SESSION_CREATED: 'SESSION_DATABASE_RECORD_CREATED',
   STORY_CREATED: 'STORY_DATABASE_RECORD_CREATED',
   VOTING_RESULT_CREATED: 'VOTING_RESULT_DATABASE_RECORD_CREATED',
+  VOTINGS_FETCHED: 'VOTINGS_FETCHED_FROM_DATABASE',
 };
 
 const databaseInitialized = () => ({
@@ -21,6 +22,11 @@ const storyCreated = () => ({
 
 const votingResultCreated = () => ({
   type: DATABASE_ACTIONS.VOTING_RESULT_CREATED,
+});
+
+const votingsFetched = votings => ({
+  type: DATABASE_ACTIONS.VOTINGS_FETCHED,
+  payload: votings,
 });
 
 export const initDatabase = () => dispatch =>
@@ -44,3 +50,6 @@ export const createVotingResult = (
   Database.createVotingResult(sessionId, storyId, resultCard).then(() =>
     dispatch(votingResultCreated())
   );
+
+export const getAllVotings = () => dispatch =>
+  Database.getAllVotings().then(votings => dispatch(votingsFetched(votings)));
