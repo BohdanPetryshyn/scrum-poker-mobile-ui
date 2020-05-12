@@ -21,6 +21,13 @@ const HomeScreen = props => {
         >
           <Text>Join Session</Text>
         </Button>
+        <Button
+          full
+          style={{ marginTop: 10 }}
+          onPress={() => props.navigation.navigate('PastSessions')}
+        >
+          <Text>Past Sessions</Text>
+        </Button>
       </Content>
     </Container>
   );

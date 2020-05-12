@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
 export const getPastSessionResultsScreenState = state =>
-  state.get('pastSessionResultsScreen');
+  state.get('pastSessionsResultsScreen');
 
 export const getPastVotingResults = createSelector(
   getPastSessionResultsScreenState,
