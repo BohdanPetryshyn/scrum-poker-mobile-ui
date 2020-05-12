@@ -2,6 +2,7 @@ const CREATE_VOTING_RESULT = `INSERT INTO votingResult VALUES(?, ?, ?, ?)`;
 const GET_VOTINGS_POPULATED = `
   SELECT
     session.id as sessionId,
+    story.id as storyId,
     session.topic as sessionTopic, 
     story.summary as storySummary,
     votingResult.resultCard
