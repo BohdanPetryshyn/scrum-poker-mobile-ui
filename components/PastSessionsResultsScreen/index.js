@@ -1,8 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { connect } from 'react-redux';
 import { Container, Content, ListItem, Text, Left, Right } from 'native-base';
+import PastVotingResult from '../../store/models/PastVotingResult';
+import { getPastVotingResults } from '../../store/selectors/pastSessionResultsScreen';
 
 const toSessionListGroup = (sessionVotingResults, sessionId) => {
   const sessionTopic = sessionVotingResults.first().get('sessionTopic');
@@ -26,8 +27,8 @@ const toSessionListGroup = (sessionVotingResults, sessionId) => {
   return votingResultListItems.unshift(listGroupHeader);
 };
 
-const PastSessionsResultsScreen = ({ votings }) => {
-  const votingResultListItems = votings
+const PastSessionsResultsScreen = ({ votingResults }) => {
+  const votingResultListItems = votingResults
     .groupBy(votingResult => votingResult.sessionId)
     .flatMap(toSessionListGroup)
     .toArray();
@@ -39,4 +40,14 @@ const PastSessionsResultsScreen = ({ votings }) => {
   );
 };
 
-export default PastSessionsResultsScreen;
+PastSessionsResultsScreen.propTypes = {
+  votingResults: ImmutablePropTypes.listOf(
+    ImmutablePropTypes.recordOf(PastVotingResult)
+  ).isRequired,
+};
+
+const mapStateToProps = state => ({
+  votingResults: getPastVotingResults(state),
+});
+
+export default connect(mapStateToProps)(PastSessionsResultsScreen);
