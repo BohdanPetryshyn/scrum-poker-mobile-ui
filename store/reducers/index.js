@@ -7,6 +7,7 @@ import joinSessionScreen from './joinSessionScreen';
 import createStoryScreen from './createStoryScreen';
 import estimatingScreen from './estimatingScreen';
 import resultScreen from './resultScreen';
+import pastSessionsResultsScreen from './pastSessionsResultsScreen';
 
 export default combineReducers({
   session,
@@ -16,4 +17,5 @@ export default combineReducers({
   createStoryScreen,
   estimatingScreen,
   resultScreen,
+  pastSessionsResultsScreen,
 });

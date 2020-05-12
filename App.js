@@ -6,7 +6,7 @@ import Navigator from './navigations';
 import store from './store';
 import LoadExpoFonts from './components/hocs/LoadExpoFonts';
 import { fetchCardSchemas } from './store/actions/requestActions';
-import { initDatabase } from './store/actions/databaseActions';
+import { getAllVotings, initDatabase } from './store/actions/databaseActions';
 
 export default () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -14,7 +14,9 @@ export default () => {
   useEffect(() => {
     Promise.all([
       store.dispatch(fetchCardSchemas()),
-      store.dispatch(initDatabase()),
+      store
+        .dispatch(initDatabase())
+        .then(() => store.dispatch(getAllVotings())),
     ]).then(() => setIsLoaded(true));
   }, []);
 
