@@ -8,7 +8,7 @@ const initialState = Map({
 export default (state = initialState, action) => {
   switch (action.type) {
     case NOTIFICATIONS_ACTIONS.TOKEN_RETRIEVED:
-      return state.set('expoPushToken', action.payload.token);
+      return state.set('expoPushToken', action.payload);
     default:
       return state;
   }
