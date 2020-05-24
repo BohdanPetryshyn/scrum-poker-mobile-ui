@@ -15,12 +15,11 @@ const tokenRetrieved = token => ({
   payload: token,
 });
 
-const registerForPushNotifications = () => async dispatch => {
+export const registerForPushNotifications = () => async dispatch => {
   const notificationPermissionStatus = await requestNotificationsPermission();
   if (!notificationPermissionStatus) {
-    dispatch(permissionDenied());
-  } else {
-    const token = await Notifications.getExpoPushTokenAsync();
-    dispatch(tokenRetrieved(token));
+    return dispatch(permissionDenied());
   }
+  const token = await Notifications.getExpoPushTokenAsync();
+  return dispatch(tokenRetrieved(token));
 };

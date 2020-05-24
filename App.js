@@ -7,6 +7,7 @@ import store from './store';
 import LoadExpoFonts from './components/hocs/LoadExpoFonts';
 import { fetchCardSchemas } from './store/actions/requestActions';
 import { getAllVotings, initDatabase } from './store/actions/databaseActions';
+import { registerForPushNotifications } from './store/actions/notificationsActions';
 
 export default () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -14,6 +15,7 @@ export default () => {
   useEffect(() => {
     Promise.all([
       store.dispatch(fetchCardSchemas()),
+      store.dispatch(registerForPushNotifications()),
       store
         .dispatch(initDatabase())
         .then(() => store.dispatch(getAllVotings())),
