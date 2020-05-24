@@ -1,7 +1,7 @@
 import { Notifications } from 'expo';
 import { requestNotificationsPermission } from '../../permissions/notifications';
 
-const NOTIFICATIONS_ACTIONS = {
+export const NOTIFICATIONS_ACTIONS = {
   PERMISSION_DENIED: 'PERMISSION_DENIED',
   TOKEN_RETRIEVED: 'TOKEN_RETRIEVED',
 };

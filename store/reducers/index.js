@@ -8,6 +8,7 @@ import createStoryScreen from './createStoryScreen';
 import estimatingScreen from './estimatingScreen';
 import resultScreen from './resultScreen';
 import pastSessionsResultsScreen from './pastSessionsResultsScreen';
+import notifications from './notifications';
 
 export default combineReducers({
   session,
@@ -18,4 +19,5 @@ export default combineReducers({
   estimatingScreen,
   resultScreen,
   pastSessionsResultsScreen,
+  notifications,
 });
