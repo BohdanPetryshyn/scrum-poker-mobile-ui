@@ -57,7 +57,12 @@ export const SOCKET_EVENT_TO_ACTION_MAPPERS = [
   ),
 ];
 
-export const createSession = (username, topic, cardSchema) => ({
+export const createSession = (
+  username,
+  topic,
+  cardSchema,
+  notificationsToken
+) => ({
   type: EMITTED_SOCKET_EVENT_ACTION_TYPES.CREATE_SESSION,
   payload: {
     socketEvent: {
@@ -66,13 +71,14 @@ export const createSession = (username, topic, cardSchema) => ({
         username,
         topic,
         cardSchema,
+        notificationsToken,
       },
       actionTypes: [RECEIVED_SOCKET_EVENT_ACTION_TYPES.SESSION_CREATED],
     },
   },
 });
 
-export const joinSession = (username, sessionId) => ({
+export const joinSession = (username, sessionId, notificationsToken) => ({
   type: EMITTED_SOCKET_EVENT_ACTION_TYPES.JOIN_SESSION,
   payload: {
     socketEvent: {
@@ -80,6 +86,7 @@ export const joinSession = (username, sessionId) => ({
       message: {
         username,
         sessionId,
+        notificationsToken,
       },
       actionTypes: [RECEIVED_SOCKET_EVENT_ACTION_TYPES.JOINED_SESSION],
     },

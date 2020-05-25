@@ -4,6 +4,7 @@ import {
   getUsername,
 } from '../selectors/createSessionScreen';
 import { createSession } from './socketActions';
+import { getNotificationsToken } from '../selectors/notifications';
 
 export const CREATE_SESSION_SCREEN_ACTION_TYPES = {
   SET_FIELD_VALUE: 'SET_CREATE_SESSION_FIELD_VALUE',
@@ -22,6 +23,9 @@ export const createSessionFromStore = () => (dispatch, getState) => {
   const username = getUsername(state);
   const topic = getTopic(state);
   const cardSchema = getCardSchema(state);
+  const notificationsToken = getNotificationsToken(state);
 
-  return dispatch(createSession(username, topic, cardSchema));
+  return dispatch(
+    createSession(username, topic, cardSchema, notificationsToken)
+  );
 };
