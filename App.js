@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Provider } from 'react-redux';
 import { AppLoading } from 'expo';
+import { Root } from 'native-base';
 
 import Navigator from './navigations';
 import store from './store';
@@ -29,7 +30,9 @@ export default () => {
   return (
     <LoadExpoFonts>
       <Provider store={store}>
-        <Navigator />
+        <Root>
+          <Navigator />
+        </Root>
       </Provider>
     </LoadExpoFonts>
   );
