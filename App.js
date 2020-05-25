@@ -5,9 +5,9 @@ import { AppLoading } from 'expo';
 import Navigator from './navigations';
 import store from './store';
 import LoadExpoFonts from './components/hocs/LoadExpoFonts';
-import { fetchCardSchemas } from './store/actions/requestActions';
-import { getAllVotings, initDatabase } from './store/actions/databaseActions';
-import { registerForPushNotifications } from './store/actions/notificationsActions';
+import { fetchCardSchemas } from './store/actions/request';
+import { getAllVotings, initDatabase } from './store/actions/database';
+import { registerForPushNotifications } from './store/actions/notifications';
 
 export default () => {
   const [isLoaded, setIsLoaded] = useState(false);

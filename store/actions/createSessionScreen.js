@@ -3,7 +3,7 @@ import {
   getTopic,
   getUsername,
 } from '../selectors/createSessionScreen';
-import { createSession } from './socketActions';
+import { createSession } from './socket';
 import { getNotificationsToken } from '../selectors/notifications';
 
 export const CREATE_SESSION_SCREEN_ACTION_TYPES = {

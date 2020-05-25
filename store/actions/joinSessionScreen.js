@@ -1,5 +1,5 @@
 import { getUsername, getSessionId } from '../selectors/joinSessionScreen';
-import { joinSession } from './socketActions';
+import { joinSession } from './socket';
 import { getNotificationsToken } from '../selectors/notifications';
 
 export const JOIN_SESSION_SCREEN_ACTION_TYPES = {

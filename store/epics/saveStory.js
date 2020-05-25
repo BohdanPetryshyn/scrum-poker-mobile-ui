@@ -1,8 +1,8 @@
 import { ofType, combineEpics } from 'redux-observable';
 import { from } from 'rxjs';
 import { map, flatMap } from 'rxjs/operators';
-import { createStory } from '../actions/databaseActions';
-import { RECEIVED_SOCKET_EVENT_ACTION_TYPES } from '../actions/socketActions';
+import { createStory } from '../actions/database';
+import { RECEIVED_SOCKET_EVENT_ACTION_TYPES } from '../actions/socket';
 
 const createStoryActionFromVotingStartedAction = action => {
   const { storyId, summary } = action.payload.story;

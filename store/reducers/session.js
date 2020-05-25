@@ -1,6 +1,6 @@
 import { Map, List } from 'immutable';
 import CardSchema from '../models/CardSchema';
-import { RECEIVED_SOCKET_EVENT_ACTION_TYPES } from '../actions/socketActions';
+import { RECEIVED_SOCKET_EVENT_ACTION_TYPES } from '../actions/socket';
 import { RESULT, VOTING } from '../models/sessionState';
 import User from '../models/User';
 import Voting from '../models/Voting';

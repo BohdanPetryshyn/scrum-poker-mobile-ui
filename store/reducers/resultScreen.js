@@ -1,5 +1,5 @@
 import { Map } from 'immutable';
-import { RESULT_SCREEN_ACTION_TYPES } from '../actions/resultScreenActions';
+import { RESULT_SCREEN_ACTION_TYPES } from '../actions/resultScreen';
 
 const initialState = Map({
   resultEstimate: null,

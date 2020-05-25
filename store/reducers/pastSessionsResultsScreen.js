@@ -1,5 +1,5 @@
 import { Map, List } from 'immutable';
-import { DATABASE_ACTIONS } from '../actions/databaseActions';
+import { DATABASE_ACTIONS } from '../actions/database';
 import PastVotingResult from '../models/PastVotingResult';
 
 const initialState = Map({

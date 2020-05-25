@@ -1,5 +1,5 @@
 import { Map } from 'immutable';
-import { EMITTED_SOCKET_EVENT_ACTION_TYPES } from '../actions/socketActions';
+import { EMITTED_SOCKET_EVENT_ACTION_TYPES } from '../actions/socket';
 
 const initialState = Map({
   estimate: null,

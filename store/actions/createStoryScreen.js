@@ -3,7 +3,7 @@ import {
   getStorySummary,
 } from '../selectors/createStoryScreen';
 import { getSessionId } from '../selectors/session';
-import { startVoting } from './socketActions';
+import { startVoting } from './socket';
 
 export const CREATE_STORY_SCREEN_ACTION_TYPES = {
   SET_FIELD_VALUE: 'SET_CREATE_STORY_FIELD_VALUE',

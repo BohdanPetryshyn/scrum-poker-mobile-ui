@@ -8,7 +8,7 @@ import { getSelectedEstimate } from '../../../store/selectors/resultScreen';
 import {
   setFieldValue,
   submitResultEstimateFromStore,
-} from '../../../store/actions/resultScreenActions';
+} from '../../../store/actions/resultScreen';
 import { scaleSize } from '../../styles/size';
 
 const ResultEstimatePicker = ({

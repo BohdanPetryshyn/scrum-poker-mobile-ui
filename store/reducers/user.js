@@ -1,4 +1,4 @@
-import { RECEIVED_SOCKET_EVENT_ACTION_TYPES } from '../actions/socketActions';
+import { RECEIVED_SOCKET_EVENT_ACTION_TYPES } from '../actions/socket';
 import User from '../models/User';
 
 const initialState = User();

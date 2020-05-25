@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { estimateStory } from '../../../store/actions/socketActions';
+import { estimateStory } from '../../../store/actions/socket';
 import { getUserCard } from '../../../store/selectors/common';
 import EstimatePicker from '../EstimatePicker';
 

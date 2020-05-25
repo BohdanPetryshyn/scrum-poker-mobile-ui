@@ -1,5 +1,5 @@
 import { getSelectedEstimate } from '../selectors/resultScreen';
-import { setVotingResult } from './socketActions';
+import { setVotingResult } from './socket';
 
 export const RESULT_SCREEN_ACTION_TYPES = {
   SET_FIELD_VALUE: 'SET_RESULT_SCREEN_FIELD_VALUE',

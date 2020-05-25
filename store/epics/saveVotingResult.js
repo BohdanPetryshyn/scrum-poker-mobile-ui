@@ -2,8 +2,8 @@ import { ofType } from 'redux-observable';
 import { from } from 'rxjs';
 import { flatMap, withLatestFrom } from 'rxjs/operators';
 import { getSessionId } from '../selectors/session';
-import { createVotingResult } from '../actions/databaseActions';
-import { RECEIVED_SOCKET_EVENT_ACTION_TYPES } from '../actions/socketActions';
+import { createVotingResult } from '../actions/database';
+import { RECEIVED_SOCKET_EVENT_ACTION_TYPES } from '../actions/socket';
 
 const toCreateVotingResultAction = ([action, state]) => {
   const sessionId = getSessionId(state);

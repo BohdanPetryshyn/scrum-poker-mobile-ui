@@ -1,5 +1,5 @@
 import { Map } from 'immutable';
-import { NOTIFICATIONS_ACTIONS } from '../actions/notificationsActions';
+import { NOTIFICATIONS_ACTIONS } from '../actions/notifications';
 
 const initialState = Map({
   expoPushToken: null,

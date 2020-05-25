@@ -1,7 +1,7 @@
 import { Map, List } from 'immutable';
 
 import { CREATE_SESSION_SCREEN_ACTION_TYPES } from '../actions/createSessionScreen';
-import { FETCH_CARD_SCHEMAS_ACTION_TYPES } from '../actions/requestActions';
+import { FETCH_CARD_SCHEMAS_ACTION_TYPES } from '../actions/request';
 import CardSchema from '../models/CardSchema';
 
 const initialState = Map({

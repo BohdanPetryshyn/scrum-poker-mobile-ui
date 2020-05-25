@@ -1,7 +1,7 @@
 import { ofType } from 'redux-observable';
 import { map } from 'rxjs/operators';
-import { createSession } from '../actions/databaseActions';
-import { RECEIVED_SOCKET_EVENT_ACTION_TYPES } from '../actions/socketActions';
+import { createSession } from '../actions/database';
+import { RECEIVED_SOCKET_EVENT_ACTION_TYPES } from '../actions/socket';
 
 const toCreateSessionAction = action => {
   const { sessionId, topic } = action.payload.pokerSession;

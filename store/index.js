@@ -8,7 +8,7 @@ import client from '../api/httpClient';
 import reducers from './reducers';
 import epics from './epics';
 import createSocketMiddleware from './middleware/socketMiddleware';
-import { SOCKET_EVENT_TO_ACTION_MAPPERS } from './actions/socketActions';
+import { SOCKET_EVENT_TO_ACTION_MAPPERS } from './actions/socket';
 
 const axiosMiddleware = createAxiosMiddleware(client, {
   returnRejectedPromiseOnError: true,
