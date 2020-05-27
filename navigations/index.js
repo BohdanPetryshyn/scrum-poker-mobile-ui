@@ -6,9 +6,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import HomeNavigator from './HomeNavigator';
 import SessionNavigator from './SessionNavigator';
 import { getIsSessionStarted } from '../store/selectors/session';
+import { navigationRef } from './externalNavigators';
 
 const Navigator = ({ isSessionStarted }) => (
-  <NavigationContainer>
+  <NavigationContainer ref={navigationRef}>
     {isSessionStarted ? <SessionNavigator /> : <HomeNavigator />}
   </NavigationContainer>
 );
@@ -22,3 +23,5 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(Navigator);
+
+export * from './externalNavigators';
