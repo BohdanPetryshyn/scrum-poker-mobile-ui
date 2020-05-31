@@ -1,4 +1,7 @@
-const CREATE_VOTING_RESULT = `INSERT INTO votingResult VALUES(?, ?, ?, ?)`;
+import * as StringUtils from '../utils/string';
+
+const VOTING_VALUE_TEMPLATE = `(?, ?, ?, ?)`;
+const CREATE_VOTING_RESULT = `INSERT INTO votingResult VALUES`;
 const GET_VOTINGS_POPULATED = `
   SELECT
     session.id as sessionId,
@@ -20,7 +23,7 @@ export const createVotingResultWithDb = db => (
   new Promise((resolve, reject) =>
     db.transaction(
       tx =>
-        tx.executeSql(CREATE_VOTING_RESULT, [
+        tx.executeSql(CREATE_VOTING_RESULT + VOTING_VALUE_TEMPLATE, [
           sessionId,
           storyId,
           resultCard,
@@ -30,6 +33,33 @@ export const createVotingResultWithDb = db => (
       resolve
     )
   );
+
+export const createVotingResultsWithDb = db => votingResults => {
+  const votingResultsTemplate = StringUtils.repeat(
+    VOTING_VALUE_TEMPLATE,
+    ', ',
+    votingResults.length
+  );
+  const now = Date.now();
+  const votingsArgs = votingResults.flatMap(votingResult => [
+    votingResult.sessionId,
+    votingResult.storyId,
+    votingResult.resultCard,
+    now,
+  ]);
+
+  return new Promise((resolve, reject) =>
+    db.transaction(
+      tx =>
+        tx.executeSql(
+          CREATE_VOTING_RESULT + votingResultsTemplate,
+          votingsArgs
+        ),
+      reject,
+      resolve
+    )
+  );
+};
 
 export const getAllVotingsWithDb = db => () =>
   new Promise((resolve, reject) =>
