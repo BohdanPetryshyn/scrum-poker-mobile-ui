@@ -18,7 +18,7 @@ export const fetchCardSchemas = () => ({
   types: getTypes(FETCH_CARD_SCHEMAS_ACTION_TYPES),
   payload: {
     request: {
-      url: '/card-schema',
+      url: '/card-schemas',
     },
   },
 });
