@@ -8,6 +8,7 @@ import {
 import httpClient from '../../api/httpClient';
 
 const TASK_NAME = 'FETCH_PAST_SESSIONS';
+const TASK_INTERVAL = 60;
 
 const updateSessions = async sessions => {
   const stories = sessions
@@ -38,3 +39,12 @@ TaskManager.defineTask(TASK_NAME, async () => {
     return BackgroundFetch.Result.Failed;
   }
 });
+
+const taskOptions = {
+  minimumInterval: TASK_INTERVAL,
+};
+
+export default async () => {
+  await BackgroundFetch.registerTaskAsync(TASK_NAME, taskOptions);
+  await BackgroundFetch.setMinimumIntervalAsync(TASK_INTERVAL);
+};

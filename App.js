@@ -9,6 +9,7 @@ import LoadExpoFonts from './components/hocs/LoadExpoFonts';
 import { fetchCardSchemas } from './store/actions/request';
 import { getAllVotings, initDatabase } from './store/actions/database';
 import { registerForPushNotifications } from './store/actions/notifications';
+import registerPastSessionsFetchTask from './tasks/fetch/pastSessions';
 
 export default () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -20,6 +21,7 @@ export default () => {
       store
         .dispatch(initDatabase())
         .then(() => store.dispatch(getAllVotings())),
+      registerPastSessionsFetchTask(),
     ]).then(() => setIsLoaded(true));
   }, []);
 
