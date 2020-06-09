@@ -9,6 +9,10 @@ export const getSessionId = createSelector(getSessionState, sessionState =>
   sessionState.get('sessionId')
 );
 
+export const getSessionTopic = createSelector(getSessionState, sessionState =>
+  sessionState.get('topic')
+);
+
 export const getIsSessionStarted = createSelector(
   getSessionId,
   sessionId => !isNil(sessionId)
