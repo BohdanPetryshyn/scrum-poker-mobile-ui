@@ -5,6 +5,7 @@ import HomeScreen from '../components/HomeScreen';
 import CreateSessionScreen from '../components/CreateSessionScreen';
 import JoinSessionScreen from '../components/JoinSessionScreen';
 import PastSessionsResultsScreen from '../components/PastSessionsResultsScreen';
+import SessionNavigator from './SessionNavigator';
 
 const Stack = createStackNavigator();
 
@@ -14,6 +15,7 @@ const HomeNavigator = () => (
     <Stack.Screen name="CreateSession" component={CreateSessionScreen} />
     <Stack.Screen name="JoinSession" component={JoinSessionScreen} />
     <Stack.Screen name="PastSessions" component={PastSessionsResultsScreen} />
+    <Stack.Screen name="Session" component={SessionNavigator} />
   </Stack.Navigator>
 );
 
