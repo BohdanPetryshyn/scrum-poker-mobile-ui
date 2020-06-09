@@ -5,6 +5,7 @@ import { Button, Icon } from 'native-base';
 import { Share } from 'react-native';
 import { getUsername } from '../store/selectors/user';
 import { getSessionId, getSessionTopic } from '../store/selectors/session';
+import { scaleSize } from './styles/size';
 
 const invitationMessage = (sessionId, sessionTopic, username) => `
 Hi there!
@@ -20,8 +21,8 @@ const ShareSessionButton = ({ username, sessionTopic, sessionId }) => {
   };
 
   return (
-    <Button onPress={shareSessionInvitation}>
-      <Icon name="share" />
+    <Button transparent onPress={shareSessionInvitation}>
+      <Icon name="ios-share" style={{ fontSize: scaleSize(25) }} />
     </Button>
   );
 };
