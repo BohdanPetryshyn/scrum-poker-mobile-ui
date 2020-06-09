@@ -29,6 +29,18 @@
           "fetch"
         ]
       }
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "bohdan-petryshyn",
+            "project": "scrum-poker-expo",
+            "authToken": "598a2097ab67493b860a5f4e52ca24165035f44df23d42e6a1e8e8abce9b529b"
+          }
+        }
+      ]
     }
   }
 }

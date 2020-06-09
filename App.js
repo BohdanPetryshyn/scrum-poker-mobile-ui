@@ -10,6 +10,7 @@ import { fetchCardSchemas } from './store/actions/request';
 import { getAllVotings, initDatabase } from './store/actions/database';
 import { registerForPushNotifications } from './store/actions/notifications';
 import registerPastSessionsFetchTask from './tasks/fetch/pastSessions';
+import SentryErrorBoundary from './components/hocs/SentryErrorBoundary';
 
 export default () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -32,9 +33,11 @@ export default () => {
   return (
     <LoadExpoFonts>
       <Provider store={store}>
-        <Root>
-          <Navigator />
-        </Root>
+        <SentryErrorBoundary>
+          <Root>
+            <Navigator />
+          </Root>
+        </SentryErrorBoundary>
       </Provider>
     </LoadExpoFonts>
   );

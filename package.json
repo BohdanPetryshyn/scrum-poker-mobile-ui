@@ -46,6 +46,7 @@
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "rxjs": "^6.5.5",
+    "sentry-expo": "^2.1.2",
     "socket.io-client": "^2.3.0"
   },
   "devDependencies": {
